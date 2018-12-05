@@ -12,7 +12,13 @@ ext {
     kotlinVersion = '1.3.10'
     kotlinStdLibDependency = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
+    retrofitVersion = '2.5.0'
+    retrofitDependency = "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    retrofitMoshiConverterDependency = "com.squareup.retrofit2:converter-moshi$retrofitVersion"
+
+    moshiDependency = "com.squareup.moshi:moshi:1.8.0"
 
     junitDependency = "junit:junit:4.12"
+    mockitoKotlinDependency = "com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0"
 
 }
