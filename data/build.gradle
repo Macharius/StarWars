@@ -23,6 +23,8 @@ android {
 }
 
 dependencies {
+    implementation project(":core")
+
     implementation rootProject.ext.appCompatV7Dependency
     testImplementation rootProject.ext.junitDependency
 }

@@ -22,6 +22,8 @@ android {
 }
 
 dependencies {
+    implementation project(":core")
+
     implementation rootProject.ext.kotlinStdLibDependency
     implementation rootProject.ext.appCompatV7Dependency
     implementation rootProject.ext.constraintLayoutDependency
