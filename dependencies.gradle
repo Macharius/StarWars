@@ -16,9 +16,12 @@ ext {
     retrofitDependency = "com.squareup.retrofit2:retrofit:$retrofitVersion"
     retrofitMoshiConverterDependency = "com.squareup.retrofit2:converter-moshi$retrofitVersion"
 
+    jodaTimeDependency = "joda-time:joda-time:2.10.1"
+
     moshiDependency = "com.squareup.moshi:moshi:1.8.0"
 
     junitDependency = "junit:junit:4.12"
     mockitoKotlinDependency = "com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0"
+    assertJDependency = "org.assertj:assertj-core:3.11.1"
 
 }

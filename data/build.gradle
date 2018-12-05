@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion rootProject.ext.androidCompileSdkVersion
@@ -25,6 +26,14 @@ android {
 dependencies {
     implementation project(":core")
 
-    implementation rootProject.ext.appCompatV7Dependency
+    implementation rootProject.ext.kotlinStdLibDependency
+
+    implementation rootProject.ext.retrofitDependency
+    implementation rootProject.ext.moshiDependency
+
+    implementation rootProject.ext.jodaTimeDependency
+
     testImplementation rootProject.ext.junitDependency
+    testImplementation rootProject.ext.mockitoKotlinDependency
+    testImplementation rootProject.ext.assertJDependency
 }
