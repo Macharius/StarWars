@@ -6,5 +6,7 @@ interface TripListPresenter {
 
     fun presentTripList(tripList: List<Trip>)
 
+    fun presentErrorMessage()
+
     enum class LoaderState { DISPLAYED, HIDDEN }
 }
