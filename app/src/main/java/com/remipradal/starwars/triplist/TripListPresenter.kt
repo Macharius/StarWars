@@ -60,7 +60,7 @@ class TripListDomainToViewModelTransformer @Inject constructor() {
             TripViewModel(
                 id = it.id,
                 pilotAvatarUrl = it.pilot.avatarUrl,
-                pilotName = it.pilot.name,
+                pilotName = it.pilot.name.toUpperCase(),
                 dropOffPlanetName = it.dropOffPlanet.name,
                 pickUpPlanetName = it.pickUpPlanet.name
             )

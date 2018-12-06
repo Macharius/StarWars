@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:background="@color/colorPrimaryDark">
+
+    <ImageView
+        android:id="@+id/pilotAvatarImageView"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/pilot_avatar_content_description"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pilotNameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="sans-serif"
+        android:letterSpacing="0.19"
+        android:lineSpacingExtra="1.3sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/pickUpPlanetTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/pilotAvatarImageView"
+        app:layout_constraintTop_toTopOf="@id/pilotAvatarImageView"
+        tools:text="Darth Vader" />
+
+    <TextView
+        android:id="@+id/pickUpPlanetTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:lineSpacingExtra="0.7sp"
+        android:textColor="@color/warmGrey"
+        app:layout_constraintBottom_toBottomOf="@id/pilotAvatarImageView"
+        app:layout_constraintStart_toStartOf="@id/pilotNameTextView"
+        app:layout_constraintTop_toBottomOf="@id/pilotNameTextView"
+        tools:text="Naboo" />
+
+    <ImageView
+        android:id="@+id/stationSeparatorImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/ic_arrow"
+        android:contentDescription="@string/arrow_content_description"
+        app:layout_constraintBottom_toBottomOf="@id/pickUpPlanetTextView"
+        app:layout_constraintStart_toEndOf="@id/pickUpPlanetTextView"
+        app:layout_constraintTop_toTopOf="@id/pickUpPlanetTextView" />
+
+    <TextView
+        android:id="@+id/dropOffTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:lineSpacingExtra="0.7sp"
+        android:textColor="@color/warmGrey"
+        app:layout_constraintBottom_toBottomOf="@id/pilotAvatarImageView"
+        app:layout_constraintStart_toEndOf="@id/stationSeparatorImageView"
+        app:layout_constraintTop_toBottomOf="@id/pilotNameTextView"
+        tools:text="Coruscent" />
+
+</android.support.constraint.ConstraintLayout>

@@ -48,7 +48,11 @@ dependencies {
     kapt rootProject.ext.daggerAndroidAnnotationProcessorDependency
 
     implementation rootProject.ext.appCompatV7Dependency
+    implementation rootProject.ext.supportDesignDependency
     implementation rootProject.ext.constraintLayoutDependency
+
+    implementation rootProject.ext.glideDependency
+    kapt rootProject.ext.glideCompilerDependency
 
     testImplementation rootProject.ext.junitDependency
     testImplementation rootProject.ext.mockitoKotlinDependency

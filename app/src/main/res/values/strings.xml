@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">StarWars</string>
     <string name="trip_list_title">Last Trips</string>
+    <string name="trip_list_error_message">You are lost Anakin</string>
+
+    <string name="pilot_avatar_content_description">Pilote\'s avatar</string>
+    <string name="arrow_content_description">Separation between pickup and dropoff planet</string>
 </resources>

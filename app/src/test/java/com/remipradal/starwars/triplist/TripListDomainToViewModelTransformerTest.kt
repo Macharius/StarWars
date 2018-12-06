@@ -42,19 +42,37 @@ class TripListDomainToViewModelTransformerTest {
                 TripViewModel(
                     id = 1,
                     pilotAvatarUrl = "avatar1",
-                    pilotName = "Darth Vader",
+                    pilotName = "DARTH VADER",
                     pickUpPlanetName = "Naboo",
                     dropOffPlanetName = "Coruscent"
                 ),
                 TripViewModel(
                     id = 2,
                     pilotAvatarUrl = "avatar2",
-                    pilotName = "Luke",
+                    pilotName = "LUKE",
                     pickUpPlanetName = "Terre",
                     dropOffPlanetName = "Mars"
                 )
             )
         )
+    }
+
+    @Test
+    fun `transform should capitalize pilot name`() {
+        // Given
+        val trip = createMockTrip(
+            1,
+            "avatar1",
+            "Darth Vader",
+            "Naboo",
+            "Coruscent"
+        )
+
+        // When
+        val viewModelList = tripListDomainToViewModelTransformer.transform(listOf(trip))
+
+        // Then
+        assertThat(viewModelList.first().pilotName).isEqualTo("DARTH VADER")
     }
 
     private fun createMockTrip(
