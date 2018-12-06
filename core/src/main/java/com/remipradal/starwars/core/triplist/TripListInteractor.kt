@@ -1,6 +1,8 @@
 package com.remipradal.starwars.core.triplist
 
-class TripListInteractor(
+import javax.inject.Inject
+
+class TripListInteractor @Inject constructor(
     private val tripListRepository: TripListRepository,
     private val tripListPresenter: TripListPresenter
 ) {

@@ -4,6 +4,8 @@ apply plugin: 'java-library'
 dependencies {
     implementation rootProject.ext.kotlinStdLibDependency
 
+    implementation rootProject.ext.javaxInjectDependency
+
     testImplementation rootProject.ext.junitDependency
     testImplementation rootProject.ext.mockitoKotlinDependency
     testImplementation rootProject.ext.assertJDependency

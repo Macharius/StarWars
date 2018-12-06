@@ -19,7 +19,7 @@ data class JsonPilot(
 )
 
 data class JsonDistance(
-    @Json(name = "value") val value: Int,
+    @Json(name = "value") val value: Long,
     @Json(name = "unit") val unit: JsonDistanceUnit
 )
 

@@ -1,6 +1,8 @@
 package com.remipradal.starwars.core.triplist
 
-class TripListTransformer(private val baseUrl: String) {
+import javax.inject.Inject
+
+class TripListTransformer @Inject constructor(private val baseUrl: String) {
 
     fun transformJsonTripListToDomainModel(jsonTripList: List<JsonTrip>): List<Trip> {
         return jsonTripList.map { it.toTrip() }
