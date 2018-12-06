@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">StarWars</string>
+    <string name="trip_list_title">Last Trips</string>
 </resources>
