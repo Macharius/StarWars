@@ -1,12 +1,9 @@
 package com.remipradal.starwars.core.triplist
 
-interface TripListRepository {
-    fun getTripList(): TripListResponse
-}
+import io.reactivex.Single
 
-sealed class TripListResponse {
-    object Error : TripListResponse()
-    data class Data(val tripList: List<Trip>) : TripListResponse()
+interface TripListRepository {
+    fun getTripList(): Single<List<Trip>>
 }
 
 data class Trip(

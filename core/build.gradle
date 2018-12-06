@@ -6,6 +6,8 @@ dependencies {
 
     implementation rootProject.ext.javaxInjectDependency
 
+    implementation rootProject.ext.rxKotlinDependency
+
     testImplementation rootProject.ext.junitDependency
     testImplementation rootProject.ext.mockitoKotlinDependency
     testImplementation rootProject.ext.assertJDependency

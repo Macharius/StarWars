@@ -7,10 +7,12 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Named
 import javax.inject.Singleton
@@ -39,25 +41,25 @@ abstract class ApplicationModule {
                     .baseUrl(BuildConfig.BASE_URL)
                     .client(okHttpClient)
                     .addConverterFactory(MoshiConverterFactory.create(moshi))
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build()
         }
 
         @Singleton
         @Provides
         @JvmStatic
-        fun provideOkHttpClient(): OkHttpClient {
-            return OkHttpClient.Builder().build()
-        }
-
-        @Provides
-        @JvmStatic
-        @Named("UI")
-        fun provideUiCoroutineScope() = CoroutineScope(Dispatchers.Main)
+        fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder().build()
 
         @Provides
         @JvmStatic
         @Named("WORKER")
-        fun provideWorkerCoroutineScope() = CoroutineScope(Dispatchers.Default)
+        fun provideWorkerScheduler(): Scheduler = Schedulers.io()
+
+        @Provides
+        @JvmStatic
+        @Named("UI")
+        fun provideUiScheduler(): Scheduler = AndroidSchedulers.mainThread()
+
     }
 
 

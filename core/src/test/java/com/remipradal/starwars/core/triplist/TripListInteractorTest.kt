@@ -1,9 +1,9 @@
 package com.remipradal.starwars.core.triplist
 
 import com.nhaarman.mockitokotlin2.given
-import com.nhaarman.mockitokotlin2.inOrder
 import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.then
+import io.reactivex.Single
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.InjectMocks
@@ -14,44 +14,19 @@ import org.mockito.junit.MockitoJUnitRunner
 class TripListInteractorTest {
 
     @InjectMocks private lateinit var tripListInteractor: TripListInteractor
-    @Mock private lateinit var tripListPresenter: TripListPresenter
     @Mock private lateinit var tripListRepository: TripListRepository
 
     @Test
-    fun `fetchTripList should show loader before call to repository and dismiss it after`() {
-        // When
-        tripListInteractor.fetchTripList()
-
-        // then
-        inOrder(tripListPresenter, tripListRepository) {
-            then(tripListPresenter).should(this).presentLoader(TripListPresenter.LoaderState.DISPLAYED)
-            then(tripListRepository).should(this).getTripList()
-            then(tripListPresenter).should(this).presentLoader(TripListPresenter.LoaderState.HIDDEN)
-        }
-    }
-
-    @Test
-    fun `fetchTripList when repository returns error then should present error message`() {
+    fun `getTripList should return `() {
         // Given
-        given(tripListRepository.getTripList()).willReturn(TripListResponse.Error)
+        val expectedTripList = mock<Single<List<Trip>>>()
+        given(tripListRepository.getTripList()).willReturn(expectedTripList)
 
         // When
-        tripListInteractor.fetchTripList()
+        val tripList = tripListInteractor.getTripList()
 
         // then
-        then(tripListPresenter).should().presentErrorMessage()
+        assertThat(tripList).isEqualTo(expectedTripList)
     }
 
-    @Test
-    fun `fetchTripList when repository returns list then should present the list`() {
-        // Given
-        val tripList = mock<List<Trip>>()
-        given(tripListRepository.getTripList()).willReturn(TripListResponse.Data(tripList))
-
-        // When
-        tripListInteractor.fetchTripList()
-
-        // then
-        then(tripListPresenter).should().presentTripList(tripList)
-    }
 }

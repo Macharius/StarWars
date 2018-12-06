@@ -30,15 +30,17 @@ dependencies {
     implementation project(":data")
 
     implementation rootProject.ext.kotlinStdLibDependency
-    implementation rootProject.ext.couroutinesDependency
-    implementation rootProject.ext.couroutinesAndroidDependency
 
     implementation rootProject.ext.retrofitDependency
     implementation rootProject.ext.retrofitMoshiConverterDependency
+    implementation rootProject.ext.retrofitRxJava2Dependency
     implementation rootProject.ext.moshiDependency
     implementation rootProject.ext.moshiKotlinDependency
 
     implementation rootProject.ext.jodaTimeDependency
+
+    implementation rootProject.ext.rxAndroidDependency
+    implementation rootProject.ext.rxKotlinDependency
 
     implementation rootProject.ext.daggerDependency
     kapt rootProject.ext.daggerCompilerDependency
