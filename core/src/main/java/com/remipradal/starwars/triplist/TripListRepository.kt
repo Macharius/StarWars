@@ -1,4 +1,4 @@
-package com.remipradal.starwars.core.triplist
+package com.remipradal.starwars.triplist
 
 import io.reactivex.Single
 

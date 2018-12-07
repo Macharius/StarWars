@@ -1,4 +1,4 @@
-package com.remipradal.starwars.core.triplist
+package com.remipradal.starwars.triplist
 
 import com.squareup.moshi.Json
 import org.joda.time.DateTime

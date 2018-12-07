@@ -1,4 +1,4 @@
-package com.remipradal.starwars.core.triplist
+package com.remipradal.starwars.triplist
 
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock

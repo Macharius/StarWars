@@ -1,6 +1,5 @@
 package com.remipradal.starwars.triplist
 
-import com.remipradal.starwars.core.triplist.TripListInteractor
 import io.reactivex.Scheduler
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject

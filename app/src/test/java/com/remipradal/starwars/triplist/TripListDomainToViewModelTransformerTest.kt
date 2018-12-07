@@ -2,9 +2,6 @@ package com.remipradal.starwars.triplist
 
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
-import com.remipradal.starwars.core.triplist.Pilot
-import com.remipradal.starwars.core.triplist.PlanetStop
-import com.remipradal.starwars.core.triplist.Trip
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
