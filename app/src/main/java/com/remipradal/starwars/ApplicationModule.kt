@@ -30,9 +30,9 @@ object ApplicationModule {
     @JvmStatic
     fun provideMoshi(dateTimeMoshiAdapter: DateTimeMoshiAdapter): Moshi {
         return Moshi.Builder()
-                .add(KotlinJsonAdapterFactory())
-                .add(dateTimeMoshiAdapter)
-                .build()
+            .add(KotlinJsonAdapterFactory())
+            .add(dateTimeMoshiAdapter)
+            .build()
     }
 
     @Singleton
@@ -40,11 +40,11 @@ object ApplicationModule {
     @JvmStatic
     fun provideRetrofit(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit {
         return Retrofit.Builder()
-                .baseUrl(BuildConfig.BASE_URL)
-                .client(okHttpClient)
-                .addConverterFactory(MoshiConverterFactory.create(moshi))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build()
+            .baseUrl(BuildConfig.BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .build()
     }
 
     @Singleton

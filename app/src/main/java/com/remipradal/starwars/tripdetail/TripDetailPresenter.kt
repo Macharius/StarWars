@@ -38,19 +38,19 @@ class TripDetailPresenter @Inject constructor(
 
     private fun fetchTripDetail(tripId: Int) {
         tripDetailInteractor.getTripDetail(tripId)
-                .subscribeOn(workerScheduler)
-                .map(transformer::transform)
-                .observeOn(uiScheduler)
-                .doOnSubscribe { tripDetailDisplay?.showLoader() }
-                .doFinally { tripDetailDisplay?.hideLoader() }
-                .subscribe(
-                    {
-                        tripDetailDisplay?.displayTripDetail(it)
-                    }, {
-                        tripDetailDisplay?.displayError()
-                    }
-                )
-                .let { compositeDisposable.addAll(it) }
+            .subscribeOn(workerScheduler)
+            .map(transformer::transform)
+            .observeOn(uiScheduler)
+            .doOnSubscribe { tripDetailDisplay?.showLoader() }
+            .doFinally { tripDetailDisplay?.hideLoader() }
+            .subscribe(
+                {
+                    tripDetailDisplay?.displayTripDetail(it)
+                }, {
+                    tripDetailDisplay?.displayError()
+                }
+            )
+            .let { compositeDisposable.addAll(it) }
     }
 
 }

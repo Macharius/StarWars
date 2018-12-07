@@ -18,10 +18,14 @@ import java.io.IOException
 @RunWith(MockitoJUnitRunner::class)
 class TripDetailPresenterTest {
 
-    @Mock private lateinit var tripDetailDisplay: TripDetailDisplay
-    @Mock private lateinit var tripDetailInteractor: TripDetailInteractor
-    @Mock private lateinit var transformer: TripDetailModelToViewModelTransformer
-    @Mock private lateinit var compositeDisposable: CompositeDisposable
+    @Mock
+    private lateinit var tripDetailDisplay: TripDetailDisplay
+    @Mock
+    private lateinit var tripDetailInteractor: TripDetailInteractor
+    @Mock
+    private lateinit var transformer: TripDetailModelToViewModelTransformer
+    @Mock
+    private lateinit var compositeDisposable: CompositeDisposable
 
     private lateinit var tripDetailPresenter: TripDetailPresenter
 

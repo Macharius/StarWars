@@ -4,11 +4,13 @@ import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.given
 import com.nhaarman.mockitokotlin2.mock
-import com.remipradal.starwars.common.*
+import com.remipradal.starwars.common.Distance
+import com.remipradal.starwars.common.Pilot
+import com.remipradal.starwars.common.PlanetStop
+import com.remipradal.starwars.common.Trip
 import org.assertj.core.api.Assertions.assertThat
 import org.joda.time.DateTime
-import org.joda.time.Period
-import org.joda.time.PeriodType
+import org.joda.time.Duration
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -29,7 +31,7 @@ class TripDetailModelToViewModelTransformerTest {
     @Before
     fun setUp() {
         given(timeFormatter.transformToString(any<DateTime>())).willReturn("6:06")
-        given(timeFormatter.transformToString(any<Period>())).willReturn("10:10")
+        given(timeFormatter.transformToString(any<Duration>())).willReturn("10:10")
 
         given(numberFormatter.format(2478572)).willReturn("2,478,572")
     }
@@ -111,7 +113,7 @@ class TripDetailModelToViewModelTransformerTest {
     fun `transform should transform trip duration`() {
         // Given
         val trip = createMockTrip()
-        given(timeFormatter.transformToString(Period(19427000, PeriodType.millis()))).willReturn("5:03:12")
+        given(timeFormatter.transformToString(Duration.millis(19427000))).willReturn("5:03:12")
 
         // When
         val tripDetailViewModel = tripDetailModelToViewModelTransformer.transform(trip)

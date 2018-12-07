@@ -6,4 +6,8 @@
     <string name="pilot_avatar_content_description">Pilote\'s avatar</string>
     <string name="arrow_content_description">Arrow</string>
     <string name="rating_star_content_description">Rating star</string>
+    <string name="pick_up_label">Departure</string>
+    <string name="drop_off_label">Arrival</string>
+    <string name="trip_distance_label">Trip Distance</string>
+    <string name="trip_duration_label">Trip Duration</string>
 </resources>

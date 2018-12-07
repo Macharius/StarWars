@@ -2,8 +2,7 @@ package com.remipradal.starwars.tripdetail
 
 import com.remipradal.starwars.common.Trip
 import org.joda.time.DateTime
-import org.joda.time.Period
-import org.joda.time.PeriodType
+import org.joda.time.Duration
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.format.PeriodFormatterBuilder
 import java.text.NumberFormat
@@ -22,7 +21,7 @@ class TripDetailModelToViewModelTransformer @Inject constructor(
             dropOffPlanetName = dropOffPlanet.name.toUpperCase(),
             dropOffPassageHour = timeFormatter.transformToString(dropOffPlanet.passageDateTime),
             tripDistance = "${numberFormatter.format(distance.value)} KM",
-            tripDuration = timeFormatter.transformToString(Period(trip.durationMilliSeconds, PeriodType.millis()))
+            tripDuration = timeFormatter.transformToString(Duration.millis(trip.durationMilliSeconds))
         )
     }
 }
@@ -39,16 +38,17 @@ class TimeFormatter @Inject constructor() {
         return DateTimeFormat.shortTime().print(dateTime)
     }
 
-    fun transformToString(period: Period): String {
+    fun transformToString(period: Duration): String {
         return PeriodFormatterBuilder()
+            .printZeroAlways()
+            .minimumPrintedDigits(1)
             .appendHours()
+            .minimumPrintedDigits(2)
             .appendSeparator(":")
             .appendMinutes()
-            .minimumPrintedDigits(2)
             .appendSeparator(":")
             .appendSeconds()
-            .minimumPrintedDigits(2)
             .toFormatter()
-            .print(period)
+            .print(period.toPeriod())
     }
 }

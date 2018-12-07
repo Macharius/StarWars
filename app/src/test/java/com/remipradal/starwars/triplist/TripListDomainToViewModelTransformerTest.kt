@@ -14,7 +14,8 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class TripListDomainToViewModelTransformerTest {
 
-    @InjectMocks private lateinit var tripListDomainToViewModelTransformer: TripListDomainToViewModelTransformer
+    @InjectMocks
+    private lateinit var tripListDomainToViewModelTransformer: TripListDomainToViewModelTransformer
 
     @Test
     fun `transform should map domain model to view model`() {
@@ -127,13 +128,15 @@ class TripListDomainToViewModelTransformerTest {
         val viewModelList = tripListDomainToViewModelTransformer.transform(listOf(trip))
 
         // Then
-        assertThat(viewModelList.first().pilotRating).isEqualTo(Rating.StarRating(
-            Rating.StarType.EMPTY,
-            Rating.StarType.EMPTY,
-            Rating.StarType.EMPTY,
-            Rating.StarType.EMPTY,
-            Rating.StarType.EMPTY
-        ))
+        assertThat(viewModelList.first().pilotRating).isEqualTo(
+            Rating.StarRating(
+                Rating.StarType.EMPTY,
+                Rating.StarType.EMPTY,
+                Rating.StarType.EMPTY,
+                Rating.StarType.EMPTY,
+                Rating.StarType.EMPTY
+            )
+        )
     }
 
     @Test
@@ -152,13 +155,15 @@ class TripListDomainToViewModelTransformerTest {
         val viewModelList = tripListDomainToViewModelTransformer.transform(listOf(trip))
 
         // Then
-        assertThat(viewModelList.first().pilotRating).isEqualTo(Rating.StarRating(
-            Rating.StarType.FILLED,
-            Rating.StarType.EMPTY,
-            Rating.StarType.EMPTY,
-            Rating.StarType.EMPTY,
-            Rating.StarType.EMPTY
-        ))
+        assertThat(viewModelList.first().pilotRating).isEqualTo(
+            Rating.StarRating(
+                Rating.StarType.FILLED,
+                Rating.StarType.EMPTY,
+                Rating.StarType.EMPTY,
+                Rating.StarType.EMPTY,
+                Rating.StarType.EMPTY
+            )
+        )
     }
 
     @Test
@@ -177,13 +182,15 @@ class TripListDomainToViewModelTransformerTest {
         val viewModelList = tripListDomainToViewModelTransformer.transform(listOf(trip))
 
         // Then
-        assertThat(viewModelList.first().pilotRating).isEqualTo(Rating.StarRating(
-            Rating.StarType.FILLED,
-            Rating.StarType.FILLED,
-            Rating.StarType.FILLED,
-            Rating.StarType.FILLED,
-            Rating.StarType.FILLED
-        ))
+        assertThat(viewModelList.first().pilotRating).isEqualTo(
+            Rating.StarRating(
+                Rating.StarType.FILLED,
+                Rating.StarType.FILLED,
+                Rating.StarType.FILLED,
+                Rating.StarType.FILLED,
+                Rating.StarType.FILLED
+            )
+        )
     }
 
     private fun createMockTrip(

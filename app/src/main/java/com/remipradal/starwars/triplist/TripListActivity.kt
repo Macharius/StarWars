@@ -14,7 +14,8 @@ import javax.inject.Inject
 
 class TripListActivity : DaggerAppCompatActivity(), TripListDisplay {
 
-    @Inject lateinit var tripListPresenter: TripListPresenter
+    @Inject
+    lateinit var tripListPresenter: TripListPresenter
 
     private val tripListAdapter = TripListAdapter {
         startActivity(TripDetailActivity.getLaunchIntent(this, it))
@@ -29,7 +30,7 @@ class TripListActivity : DaggerAppCompatActivity(), TripListDisplay {
             adapter = tripListAdapter
             val dividerItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
             ContextCompat.getDrawable(this@TripListActivity, R.drawable.bg_separator)
-                    ?.let { dividerItemDecoration.setDrawable(it) }
+                ?.let { dividerItemDecoration.setDrawable(it) }
             addItemDecoration(dividerItemDecoration)
         }
     }
@@ -59,7 +60,7 @@ class TripListActivity : DaggerAppCompatActivity(), TripListDisplay {
 
     override fun displayError() {
         Snackbar.make(findViewById(android.R.id.content), R.string.trip_list_error_message, Snackbar.LENGTH_INDEFINITE)
-                .show()
+            .show()
     }
 
 }

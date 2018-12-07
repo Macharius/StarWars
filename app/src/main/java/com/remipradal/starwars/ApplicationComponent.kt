@@ -13,11 +13,13 @@ import javax.inject.Singleton
 
 
 @Singleton
-@Component(modules = [
-    AndroidSupportInjectionModule::class,
-    ApplicationModule::class,
-    ActivitiesInjectorModule::class
-])
+@Component(
+    modules = [
+        AndroidSupportInjectionModule::class,
+        ApplicationModule::class,
+        ActivitiesInjectorModule::class
+    ]
+)
 
 interface ApplicationComponent : AndroidInjector<StarWarsTripApplication> {
 

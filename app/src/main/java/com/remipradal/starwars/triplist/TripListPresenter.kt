@@ -35,19 +35,19 @@ class TripListPresenter @Inject constructor(
 
     private fun fetchTripList() {
         tripListInteractor.getTripList()
-                .subscribeOn(workerScheduler)
-                .map(transformer::transform)
-                .observeOn(uiScheduler)
-                .doOnSubscribe { tripListDisplay?.showLoader() }
-                .doFinally { tripListDisplay?.hideLoader() }
-                .subscribe(
-                    {
-                        tripListDisplay?.displayTripList(it)
-                    }, {
-                        tripListDisplay?.displayError()
-                    }
-                )
-                .let { compositeDisposable.addAll(it) }
+            .subscribeOn(workerScheduler)
+            .map(transformer::transform)
+            .observeOn(uiScheduler)
+            .doOnSubscribe { tripListDisplay?.showLoader() }
+            .doFinally { tripListDisplay?.hideLoader() }
+            .subscribe(
+                {
+                    tripListDisplay?.displayTripList(it)
+                }, {
+                    tripListDisplay?.displayError()
+                }
+            )
+            .let { compositeDisposable.addAll(it) }
     }
 
 }

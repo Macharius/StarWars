@@ -10,11 +10,11 @@
 
     <style name="AppTheme.TransparentActionBar" parent="AppTheme">
         <item name="actionBarStyle">@style/TransparentActionBar</item>
-        <item name="windowActionBarOverlay">true</item>
+        <item name="windowActionBarOverlay">false</item>
     </style>
 
     <style name="TransparentActionBar" parent="Widget.AppCompat.Light.ActionBar.Solid">
-        <item name="background">@null</item>
+        <item name="background">@android:color/transparent</item>
     </style>
 
 </resources>

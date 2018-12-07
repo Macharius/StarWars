@@ -5,8 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import com.bumptech.glide.Glide
 import com.remipradal.starwars.R
 import dagger.android.support.DaggerAppCompatActivity
+import kotlinx.android.synthetic.main.activity_trip_detail.*
 import javax.inject.Inject
 
 class TripDetailActivity : DaggerAppCompatActivity(), TripDetailDisplay {
@@ -21,7 +23,8 @@ class TripDetailActivity : DaggerAppCompatActivity(), TripDetailDisplay {
         }
     }
 
-    @Inject lateinit var tripDetailPresenter: TripDetailPresenter
+    @Inject
+    lateinit var tripDetailPresenter: TripDetailPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +54,19 @@ class TripDetailActivity : DaggerAppCompatActivity(), TripDetailDisplay {
     }
 
     override fun displayTripDetail(tripDetailViewModel: TripDetailViewModel) {
-        Log.d(TripDetailActivity::class.java.simpleName, "displayTripDetail")
+        with(tripDetailViewModel) {
+            Glide.with(this@TripDetailActivity).load(pilotAvatarUrl).into(pilotAvatarImageView)
+
+            pilotNameTextView.text = pilotName
+            pickUpPlanetNameTextView.text = pickUpPlanetName
+            pickUpTimeTextView.text = pickUpPassageHour
+
+            dropOffPlanetNameTextView.text = dropOffPlanetName
+            dropOffTimeTextView.text = dropOffPassageHour
+
+            tripDurationTextView.text = tripDuration
+            tripDistanceTextView.text = tripDistance
+        }
     }
 
     override fun showLoader() {
