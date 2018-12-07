@@ -1,6 +1,6 @@
 package com.remipradal.starwars.tripdetail
 
-import com.remipradal.starwars.triplist.Trip
+import com.remipradal.starwars.common.Trip
 import io.reactivex.Single
 
 interface TripDetailRepository {

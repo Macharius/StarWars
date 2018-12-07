@@ -1,8 +1,5 @@
 package com.remipradal.starwars.common
 
-import com.remipradal.starwars.triplist.Pilot
-import com.remipradal.starwars.triplist.PlanetStop
-import com.remipradal.starwars.triplist.Trip
 import javax.inject.Inject
 
 class TripListTransformer @Inject constructor(private val baseUrl: String) {
@@ -19,7 +16,11 @@ class TripListTransformer @Inject constructor(private val baseUrl: String) {
         rating = if (rating != 0f) rating else null
     )
 
-    private fun JsonPlanetStop.toPlanetStop() = PlanetStop(name)
+    private fun JsonPlanetStop.toPlanetStop() = PlanetStop(
+        name = name,
+        imageUrl = baseUrl + pictureUrl,
+        passageDateTime = passageDateTime
+    )
 
     private fun JsonTrip.toTrip() = Trip(
         id = id,

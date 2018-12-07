@@ -1,5 +1,6 @@
 package com.remipradal.starwars.triplist
 
+import com.remipradal.starwars.common.Trip
 import io.reactivex.Single
 import javax.inject.Inject
 

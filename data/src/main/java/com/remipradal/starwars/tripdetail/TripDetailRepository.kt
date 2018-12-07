@@ -1,7 +1,7 @@
 package com.remipradal.starwars.tripdetail
 
 import com.remipradal.starwars.common.JsonTrip
-import com.remipradal.starwars.triplist.Trip
+import com.remipradal.starwars.common.Trip
 import com.remipradal.starwars.common.TripListTransformer
 import io.reactivex.Single
 import retrofit2.http.GET

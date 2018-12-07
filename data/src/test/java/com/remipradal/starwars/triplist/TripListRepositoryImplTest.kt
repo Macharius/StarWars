@@ -3,6 +3,7 @@ package com.remipradal.starwars.triplist
 import com.nhaarman.mockitokotlin2.given
 import com.nhaarman.mockitokotlin2.mock
 import com.remipradal.starwars.common.JsonTrip
+import com.remipradal.starwars.common.Trip
 import com.remipradal.starwars.common.TripListTransformer
 import io.reactivex.Single
 import org.junit.Test
