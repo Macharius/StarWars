@@ -5,6 +5,7 @@ import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.View
 import com.remipradal.starwars.R
 import dagger.android.support.DaggerAppCompatActivity
@@ -15,7 +16,9 @@ class TripListActivity : DaggerAppCompatActivity(), TripListDisplay {
 
     @Inject lateinit var tripListPresenter: TripListPresenter
 
-    private val tripListAdapter = TripListAdapter()
+    private val tripListAdapter = TripListAdapter {
+        Log.d(TripListActivity::class.java.simpleName, "Item with id $it clicked")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

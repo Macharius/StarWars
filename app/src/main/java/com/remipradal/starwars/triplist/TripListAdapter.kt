@@ -11,13 +11,13 @@ import com.bumptech.glide.Glide
 import com.remipradal.starwars.R
 import kotlinx.android.synthetic.main.cell_trip.view.*
 
-class TripListAdapter : RecyclerView.Adapter<TripViewHolder>() {
+class TripListAdapter(private val onClickCallback: ((TripId) -> Unit)) : RecyclerView.Adapter<TripViewHolder>() {
 
     var tripViewModelList: List<TripViewModel> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TripViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.cell_trip, parent, false)
-        return TripViewHolder(view)
+        return TripViewHolder(view, onClickCallback)
     }
 
     override fun getItemCount(): Int = tripViewModelList.size
@@ -28,7 +28,12 @@ class TripListAdapter : RecyclerView.Adapter<TripViewHolder>() {
 
 }
 
-class TripViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+typealias TripId = Int
+
+class TripViewHolder(
+    view: View,
+    private val onClickCallback: ((TripId) -> Unit)
+) : RecyclerView.ViewHolder(view) {
     fun bindViewModel(tripViewModel: TripViewModel) {
         with(itemView) {
             Glide.with(this).load(tripViewModel.pilotAvatarUrl).into(pilotAvatarImageView)
@@ -43,6 +48,8 @@ class TripViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                     bindRating(tripViewModel.pilotRating)
                 }
             }
+
+            setOnClickListener { onClickCallback(tripViewModel.id) }
         }
     }
 
