@@ -1,4 +1,4 @@
-package com.remipradal.starwars.triplist
+package com.remipradal.starwars.tripdetail
 
 import com.nhaarman.mockitokotlin2.given
 import com.nhaarman.mockitokotlin2.mock
@@ -12,22 +12,22 @@ import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class TripListInteractorTest {
+class TripDetailInteractorTest {
 
-    @InjectMocks private lateinit var tripListInteractor: TripListInteractor
-    @Mock private lateinit var tripListRepository: TripListRepository
+    @InjectMocks private lateinit var tripDetailInteractor: TripDetailInteractor
+    @Mock private lateinit var tripDetailRepository: TripDetailRepository
 
     @Test
     fun `getTripList should return `() {
         // Given
-        val expectedTripList = mock<Single<List<Trip>>>()
-        given(tripListRepository.getTripList()).willReturn(expectedTripList)
+        val expectedTrip = mock<Single<Trip>>()
+        given(tripDetailRepository.getTripDetail(42)).willReturn(expectedTrip)
 
         // When
-        val tripList = tripListInteractor.getTripList()
+        val trip = tripDetailInteractor.getTripDetail(42)
 
         // then
-        assertThat(tripList).isEqualTo(expectedTripList)
+        assertThat(trip).isEqualTo(expectedTrip)
     }
 
 }

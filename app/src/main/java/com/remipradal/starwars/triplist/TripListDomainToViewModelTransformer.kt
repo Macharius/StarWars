@@ -1,5 +1,6 @@
 package com.remipradal.starwars.triplist
 
+import com.remipradal.starwars.common.Trip
 import javax.inject.Inject
 
 class TripListDomainToViewModelTransformer @Inject constructor() {
