@@ -1,5 +1,6 @@
 package com.remipradal.starwars
 
+import com.remipradal.starwars.common.TripListTransformer
 import com.remipradal.starwars.utils.DateTimeMoshiAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -17,6 +18,12 @@ import javax.inject.Singleton
 
 @Module
 object ApplicationModule {
+
+    @Provides
+    @JvmStatic
+    fun provideTripListTransformer(): TripListTransformer {
+        return TripListTransformer(BuildConfig.BASE_URL)
+    }
 
     @Singleton
     @Provides

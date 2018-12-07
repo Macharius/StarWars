@@ -3,17 +3,25 @@ package com.remipradal.starwars.tripdetail
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import com.remipradal.starwars.R
 import dagger.android.support.DaggerAppCompatActivity
+import javax.inject.Inject
 
-class TripDetailActivity : DaggerAppCompatActivity() {
+class TripDetailActivity : DaggerAppCompatActivity(), TripDetailDisplay {
 
     companion object {
-        fun getLaunchIntent(context: Context): Intent {
-            return Intent(context, TripDetailActivity::class.java)
+        private const val TRIP_ID_EXTRA = "TRIP_ID_EXTRA"
+
+        fun getLaunchIntent(context: Context, tripId: Int): Intent {
+            return Intent(context, TripDetailActivity::class.java).apply {
+                putExtra(TRIP_ID_EXTRA, tripId)
+            }
         }
     }
+
+    @Inject lateinit var tripDetailPresenter: TripDetailPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,5 +38,31 @@ class TripDetailActivity : DaggerAppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        tripDetailPresenter.subscribe(this, intent.getIntExtra(TRIP_ID_EXTRA, 0))
+    }
+
+    override fun onPause() {
+        tripDetailPresenter.unsubscribe()
+        super.onPause()
+    }
+
+    override fun displayTripDetail(tripDetailViewModel: TripDetailViewModel) {
+        Log.d(TripDetailActivity::class.java.simpleName, "displayTripDetail")
+    }
+
+    override fun showLoader() {
+        Log.d(TripDetailActivity::class.java.simpleName, "showLoader")
+    }
+
+    override fun hideLoader() {
+        Log.d(TripDetailActivity::class.java.simpleName, "hideLoader")
+    }
+
+    override fun displayError() {
+        Log.d(TripDetailActivity::class.java.simpleName, "displayError")
     }
 }

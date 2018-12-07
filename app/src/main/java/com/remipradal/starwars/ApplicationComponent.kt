@@ -1,6 +1,7 @@
 package com.remipradal.starwars
 
 import com.remipradal.starwars.tripdetail.TripDetailActivity
+import com.remipradal.starwars.tripdetail.TripDetailModule
 import com.remipradal.starwars.triplist.TripListActivity
 import com.remipradal.starwars.triplist.TripListModule
 import dagger.Component
@@ -31,7 +32,7 @@ abstract class ActivitiesInjectorModule {
     @Suppress("unused")
     abstract fun contributeTripListActivityInjector(): TripListActivity
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [TripDetailModule::class])
     @Suppress("unused")
     abstract fun contributeTripDetailActivityInjector(): TripDetailActivity
 

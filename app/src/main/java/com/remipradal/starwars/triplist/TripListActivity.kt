@@ -17,7 +17,7 @@ class TripListActivity : DaggerAppCompatActivity(), TripListDisplay {
     @Inject lateinit var tripListPresenter: TripListPresenter
 
     private val tripListAdapter = TripListAdapter {
-        startActivity(TripDetailActivity.getLaunchIntent(this))
+        startActivity(TripDetailActivity.getLaunchIntent(this, it))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -4,6 +4,7 @@ import com.nhaarman.mockitokotlin2.given
 import com.nhaarman.mockitokotlin2.inOrder
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.then
+import com.remipradal.starwars.common.Trip
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.TestScheduler

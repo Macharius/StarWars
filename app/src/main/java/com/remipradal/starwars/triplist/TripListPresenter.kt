@@ -34,11 +34,11 @@ class TripListPresenter @Inject constructor(
     }
 
     private fun fetchTripList() {
-        tripListDisplay?.showLoader()
         tripListInteractor.getTripList()
                 .subscribeOn(workerScheduler)
-                .map { transformer.transform(it) }
+                .map(transformer::transform)
                 .observeOn(uiScheduler)
+                .doOnSubscribe { tripListDisplay?.showLoader() }
                 .doFinally { tripListDisplay?.hideLoader() }
                 .subscribe(
                     {

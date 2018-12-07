@@ -20,7 +20,7 @@ class TripListRepositoryImpl @Inject constructor(
     }
 
     override fun getTripList(): Single<List<Trip>> {
-        return service.getTripList().map { tripListTransformer.transformJsonTripListToDomainModel(it) }
+        return service.getTripList().map(tripListTransformer::transformJsonTripListToDomainModel)
     }
 
 }

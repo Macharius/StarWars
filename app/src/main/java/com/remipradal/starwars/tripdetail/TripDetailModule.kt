@@ -1,4 +1,4 @@
-package com.remipradal.starwars.triplist
+package com.remipradal.starwars.tripdetail
 
 import dagger.Binds
 import dagger.Module
@@ -7,15 +7,15 @@ import io.reactivex.disposables.CompositeDisposable
 import retrofit2.Retrofit
 
 @Module
-abstract class TripListModule {
+abstract class TripDetailModule {
 
     @Module
     companion object {
 
         @Provides
         @JvmStatic
-        fun provideService(retrofit: Retrofit): TripListRepositoryImpl.Service {
-            return retrofit.create(TripListRepositoryImpl.Service::class.java)
+        fun provideService(retrofit: Retrofit): TripDetailRepositoryImpl.Service {
+            return retrofit.create(TripDetailRepositoryImpl.Service::class.java)
         }
 
         @Provides
@@ -26,6 +26,5 @@ abstract class TripListModule {
 
     @Binds
     @Suppress("unused")
-    abstract fun bindTripListRepository(tripListRepositoryImpl: TripListRepositoryImpl): TripListRepository
-
+    abstract fun bindTripDetailRepository(tripDetailRepositoryImpl: TripDetailRepositoryImpl): TripDetailRepository
 }

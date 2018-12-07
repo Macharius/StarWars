@@ -21,6 +21,6 @@ class TripDetailRepositoryImpl @Inject constructor(
     }
 
     override fun getTripDetail(id: Int): Single<Trip> {
-        return service.getTripDetail(id).map { tripListTransformer.transformJsonTripToDomainModel(it) }
+        return service.getTripDetail(id).map(tripListTransformer::transformJsonTripToDomainModel)
     }
 }
