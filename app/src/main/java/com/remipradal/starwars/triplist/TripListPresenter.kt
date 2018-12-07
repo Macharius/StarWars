@@ -1,6 +1,5 @@
 package com.remipradal.starwars.triplist
 
-import com.remipradal.starwars.core.triplist.Trip
 import com.remipradal.starwars.core.triplist.TripListInteractor
 import io.reactivex.Scheduler
 import io.reactivex.disposables.CompositeDisposable
@@ -53,26 +52,3 @@ class TripListPresenter @Inject constructor(
     }
 
 }
-
-class TripListDomainToViewModelTransformer @Inject constructor() {
-    fun transform(tripList: List<Trip>): List<TripViewModel> {
-        return tripList.map {
-            TripViewModel(
-                id = it.id,
-                pilotAvatarUrl = it.pilot.avatarUrl,
-                pilotName = it.pilot.name.toUpperCase(),
-                dropOffPlanetName = it.dropOffPlanet.name,
-                pickUpPlanetName = it.pickUpPlanet.name
-            )
-        }
-    }
-
-}
-
-data class TripViewModel(
-    val id: Int,
-    val pilotAvatarUrl: String,
-    val pilotName: String,
-    val pickUpPlanetName: String,
-    val dropOffPlanetName: String
-)

@@ -23,14 +23,16 @@ class TripListDomainToViewModelTransformerTest {
             "avatar1",
             "Darth Vader",
             "Naboo",
-            "Coruscent"
+            "Coruscent",
+            1f
         )
         val secondTrip = createMockTrip(
             2,
             "avatar2",
             "Luke",
             "Terre",
-            "Mars"
+            "Mars",
+            1f
         )
 
         // When
@@ -44,14 +46,28 @@ class TripListDomainToViewModelTransformerTest {
                     pilotAvatarUrl = "avatar1",
                     pilotName = "DARTH VADER",
                     pickUpPlanetName = "Naboo",
-                    dropOffPlanetName = "Coruscent"
+                    dropOffPlanetName = "Coruscent",
+                    pilotRating = Rating.StarRating(
+                        Rating.StarType.FILLED,
+                        Rating.StarType.EMPTY,
+                        Rating.StarType.EMPTY,
+                        Rating.StarType.EMPTY,
+                        Rating.StarType.EMPTY
+                    )
                 ),
                 TripViewModel(
                     id = 2,
                     pilotAvatarUrl = "avatar2",
                     pilotName = "LUKE",
                     pickUpPlanetName = "Terre",
-                    dropOffPlanetName = "Mars"
+                    dropOffPlanetName = "Mars",
+                    pilotRating = Rating.StarRating(
+                        Rating.StarType.FILLED,
+                        Rating.StarType.EMPTY,
+                        Rating.StarType.EMPTY,
+                        Rating.StarType.EMPTY,
+                        Rating.StarType.EMPTY
+                    )
                 )
             )
         )
@@ -65,7 +81,8 @@ class TripListDomainToViewModelTransformerTest {
             "avatar1",
             "Darth Vader",
             "Naboo",
-            "Coruscent"
+            "Coruscent",
+            2f
         )
 
         // When
@@ -75,17 +92,113 @@ class TripListDomainToViewModelTransformerTest {
         assertThat(viewModelList.first().pilotName).isEqualTo("DARTH VADER")
     }
 
+    @Test
+    fun `transform when rating is null should not show rating`() {
+        // Given
+        val trip = createMockTrip(
+            1,
+            "avatar1",
+            "Darth Vader",
+            "Naboo",
+            "Coruscent",
+            null
+        )
+
+        // When
+        val viewModelList = tripListDomainToViewModelTransformer.transform(listOf(trip))
+
+        // Then
+        assertThat(viewModelList.first().pilotRating).isEqualTo(Rating.NoRating)
+    }
+
+    @Test
+    fun `transform when rating is below 1 should have only empty stars`() {
+        // Given
+        val trip = createMockTrip(
+            1,
+            "avatar1",
+            "Darth Vader",
+            "Naboo",
+            "Coruscent",
+            0.9f
+        )
+
+        // When
+        val viewModelList = tripListDomainToViewModelTransformer.transform(listOf(trip))
+
+        // Then
+        assertThat(viewModelList.first().pilotRating).isEqualTo(Rating.StarRating(
+            Rating.StarType.EMPTY,
+            Rating.StarType.EMPTY,
+            Rating.StarType.EMPTY,
+            Rating.StarType.EMPTY,
+            Rating.StarType.EMPTY
+        ))
+    }
+
+    @Test
+    fun `transform when rating is above 1 but below 2 then should have a rating with only the first star filled`() {
+        // Given
+        val trip = createMockTrip(
+            1,
+            "avatar1",
+            "Darth Vader",
+            "Naboo",
+            "Coruscent",
+            1.1f
+        )
+
+        // When
+        val viewModelList = tripListDomainToViewModelTransformer.transform(listOf(trip))
+
+        // Then
+        assertThat(viewModelList.first().pilotRating).isEqualTo(Rating.StarRating(
+            Rating.StarType.FILLED,
+            Rating.StarType.EMPTY,
+            Rating.StarType.EMPTY,
+            Rating.StarType.EMPTY,
+            Rating.StarType.EMPTY
+        ))
+    }
+
+    @Test
+    fun `transform when rating is 5 then should have all stars filled`() {
+        // Given
+        val trip = createMockTrip(
+            1,
+            "avatar1",
+            "Darth Vader",
+            "Naboo",
+            "Coruscent",
+            5f
+        )
+
+        // When
+        val viewModelList = tripListDomainToViewModelTransformer.transform(listOf(trip))
+
+        // Then
+        assertThat(viewModelList.first().pilotRating).isEqualTo(Rating.StarRating(
+            Rating.StarType.FILLED,
+            Rating.StarType.FILLED,
+            Rating.StarType.FILLED,
+            Rating.StarType.FILLED,
+            Rating.StarType.FILLED
+        ))
+    }
+
     private fun createMockTrip(
         id: Int,
         pilotAvatarUrl: String,
         pilotName: String,
         pickUpPlanetName: String,
-        dropOffPlanetName: String
+        dropOffPlanetName: String,
+        rating: Float?
     ): Trip {
 
         val pilot = mock<Pilot> {
             on { this.avatarUrl } doReturn pilotAvatarUrl
             on { this.name } doReturn pilotName
+            on { this.rating } doReturn rating
         }
 
         val pickUpPlanet = mock<PlanetStop> {
