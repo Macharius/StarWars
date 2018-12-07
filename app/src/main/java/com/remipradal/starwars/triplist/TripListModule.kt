@@ -1,6 +1,7 @@
 package com.remipradal.starwars.triplist
 
 import com.remipradal.starwars.BuildConfig
+import com.remipradal.starwars.common.TripListTransformer
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

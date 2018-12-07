@@ -2,6 +2,8 @@ package com.remipradal.starwars.triplist
 
 import com.nhaarman.mockitokotlin2.given
 import com.nhaarman.mockitokotlin2.mock
+import com.remipradal.starwars.common.JsonTrip
+import com.remipradal.starwars.common.TripListTransformer
 import io.reactivex.Single
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -17,7 +19,7 @@ class TripListRepositoryImplTest {
     @Mock private lateinit var tripListTransformer: TripListTransformer
 
     @Test
-    fun `getTripList when network call throws IOException then should return Error`() {
+    fun `getTripList should call service and map result to domain model`() {
         // Given
         val element = mock<List<JsonTrip>>()
         val jsonTripList = Single.just(element)

@@ -2,6 +2,10 @@ package com.remipradal.starwars.triplist
 
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
+import com.remipradal.starwars.common.JsonPilot
+import com.remipradal.starwars.common.JsonPlanetStop
+import com.remipradal.starwars.common.JsonTrip
+import com.remipradal.starwars.common.TripListTransformer
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 
@@ -39,15 +43,34 @@ class TripListTransformerTest {
     }
 
     @Test
-    fun `transformJsonTripListToDomainModel when pilot rating is zero should transform to null`() {
+    fun `transformJsonTripToDomainModel should map to domain data`() {
+        // Given
+        val jsonTrip = createJsonTripMock(tripId = 1)
+
+        // When
+        val trip = tripListTransformer.transformJsonTripToDomainModel(jsonTrip)
+
+        // Then
+        assertThat(trip).isEqualTo(
+            Trip(
+                id = 1,
+                pilot = Pilot("Darth Vader", "absolutePath/relative/url", 1.3f),
+                pickUpPlanet = PlanetStop("Dagobah"),
+                dropOffPlanet = PlanetStop("Coruscent")
+            )
+        )
+    }
+
+    @Test
+    fun `transformJsonTripToDomainModel when pilot rating is zero should transform to null`() {
         // Given
         val jsonTrip = createJsonTripMock(tripId = 1, pilotRating = 0f)
 
         // When
-        val tripList = tripListTransformer.transformJsonTripListToDomainModel(listOf(jsonTrip))
+        val trip = tripListTransformer.transformJsonTripToDomainModel(jsonTrip)
 
         // Then
-        assertThat(tripList.first().pilot.rating).isNull()
+        assertThat(trip.pilot.rating).isNull()
     }
 
     private fun createJsonTripMock(tripId: Int, pilotRating: Float = 1.3f): JsonTrip {
