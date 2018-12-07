@@ -1,5 +1,6 @@
 package com.remipradal.starwars
 
+import com.remipradal.starwars.tripdetail.TripDetailActivity
 import com.remipradal.starwars.triplist.TripListActivity
 import com.remipradal.starwars.triplist.TripListModule
 import dagger.Component
@@ -26,6 +27,9 @@ interface ApplicationComponent : AndroidInjector<StarWarsTripApplication> {
 @Module
 abstract class ActivitiesInjectorModule {
     @ContributesAndroidInjector(modules = [TripListModule::class])
-    abstract fun contributeMainActivityInjector(): TripListActivity
+    abstract fun contributeTripListActivityInjector(): TripListActivity
+
+    @ContributesAndroidInjector
+    abstract fun contributeTripDetailActivityInjector(): TripDetailActivity
 }
 

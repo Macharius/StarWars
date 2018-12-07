@@ -5,9 +5,9 @@ import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.View
 import com.remipradal.starwars.R
+import com.remipradal.starwars.tripdetail.TripDetailActivity
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_trip_list.*
 import javax.inject.Inject
@@ -17,7 +17,7 @@ class TripListActivity : DaggerAppCompatActivity(), TripListDisplay {
     @Inject lateinit var tripListPresenter: TripListPresenter
 
     private val tripListAdapter = TripListAdapter {
-        Log.d(TripListActivity::class.java.simpleName, "Item with id $it clicked")
+        startActivity(TripDetailActivity.getLaunchIntent(this))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

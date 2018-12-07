@@ -17,13 +17,18 @@
 
         <activity
             android:name=".triplist.TripListActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/trip_list_title">
+            android:label="@string/trip_list_title"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".tripdetail.TripDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.TransparentActionBar" />
 
     </application>
 
