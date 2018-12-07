@@ -4,5 +4,6 @@
     <string name="trip_list_error_message">You are lost Anakin</string>
 
     <string name="pilot_avatar_content_description">Pilote\'s avatar</string>
-    <string name="arrow_content_description">Separation between pickup and dropoff planet</string>
+    <string name="arrow_content_description">Arrow</string>
+    <string name="rating_star_content_description">Rating star</string>
 </resources>

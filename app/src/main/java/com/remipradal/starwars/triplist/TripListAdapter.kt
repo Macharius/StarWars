@@ -1,9 +1,12 @@
 package com.remipradal.starwars.triplist
 
+import android.support.annotation.DrawableRes
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.remipradal.starwars.R
 import kotlinx.android.synthetic.main.cell_trip.view.*
@@ -32,6 +35,42 @@ class TripViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             pilotNameTextView.text = tripViewModel.pilotName
             pickUpPlanetTextView.text = tripViewModel.pickUpPlanetName
             dropOffTextView.text = tripViewModel.dropOffPlanetName
+
+            when (tripViewModel.pilotRating) {
+                is Rating.NoRating -> starGroup.visibility = View.GONE
+                is Rating.StarRating -> {
+                    starGroup.visibility = View.VISIBLE
+                    bindRating(tripViewModel.pilotRating)
+                }
+            }
         }
     }
+
+    private fun bindRating(rating: Rating) = with(itemView) {
+        when (rating) {
+            is Rating.NoRating -> starGroup.visibility = View.GONE
+            is Rating.StarRating -> {
+                starGroup.visibility = View.VISIBLE
+                mapOf(
+                    firstStarImageView to rating.firstStar,
+                    secondStarImageView to rating.secondStar,
+                    thirdStarImageView to rating.thirdStar,
+                    fourthStarImageView to rating.fourthStar,
+                    fifthStarImageView to rating.fifthStar
+                ).forEach { applyStarRating(it.key, it.value) }
+            }
+        }
+    }
+
+    private fun applyStarRating(starImageView: ImageView, starType: Rating.StarType) {
+        val starDrawable = getStarDrawable(starType)
+        starImageView.setImageDrawable(ContextCompat.getDrawable(starImageView.context, starDrawable))
+    }
+
+    @DrawableRes
+    private fun getStarDrawable(starType: Rating.StarType) = when (starType) {
+        Rating.StarType.FILLED -> R.drawable.ic_star_filled
+        Rating.StarType.EMPTY -> R.drawable.ic_star_empty
+    }
+
 }

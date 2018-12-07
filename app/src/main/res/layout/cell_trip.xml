@@ -14,13 +14,15 @@
         android:contentDescription="@string/pilot_avatar_content_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@color/warmGrey" />
 
     <TextView
         android:id="@+id/pilotNameTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="sans-serif"
         android:letterSpacing="0.19"
         android:lineSpacingExtra="1.3sp"
@@ -29,7 +31,7 @@
         app:layout_constraintBottom_toTopOf="@id/pickUpPlanetTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/pilotAvatarImageView"
-        app:layout_constraintTop_toTopOf="@id/pilotAvatarImageView"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Darth Vader" />
 
     <TextView
@@ -39,7 +41,7 @@
         android:fontFamily="sans-serif-medium"
         android:lineSpacingExtra="0.7sp"
         android:textColor="@color/warmGrey"
-        app:layout_constraintBottom_toBottomOf="@id/pilotAvatarImageView"
+        app:layout_constraintBottom_toTopOf="@id/firstStarImageView"
         app:layout_constraintStart_toStartOf="@id/pilotNameTextView"
         app:layout_constraintTop_toBottomOf="@id/pilotNameTextView"
         tools:text="Naboo" />
@@ -49,8 +51,8 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:src="@drawable/ic_arrow"
         android:contentDescription="@string/arrow_content_description"
+        android:src="@drawable/ic_arrow"
         app:layout_constraintBottom_toBottomOf="@id/pickUpPlanetTextView"
         app:layout_constraintStart_toEndOf="@id/pickUpPlanetTextView"
         app:layout_constraintTop_toTopOf="@id/pickUpPlanetTextView" />
@@ -63,9 +65,70 @@
         android:fontFamily="sans-serif-medium"
         android:lineSpacingExtra="0.7sp"
         android:textColor="@color/warmGrey"
-        app:layout_constraintBottom_toBottomOf="@id/pilotAvatarImageView"
+        app:layout_constraintBottom_toBottomOf="@id/pickUpPlanetTextView"
         app:layout_constraintStart_toEndOf="@id/stationSeparatorImageView"
-        app:layout_constraintTop_toBottomOf="@id/pilotNameTextView"
+        app:layout_constraintTop_toTopOf="@id/pickUpPlanetTextView"
         tools:text="Coruscent" />
+
+    <ImageView
+        android:id="@+id/firstStarImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/rating_star_content_description"
+        android:src="@drawable/ic_star_filled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/pickUpPlanetTextView"
+        app:layout_constraintTop_toBottomOf="@id/pickUpPlanetTextView" />
+
+    <ImageView
+        android:id="@+id/secondStarImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/rating_star_content_description"
+        android:src="@drawable/ic_star_filled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/firstStarImageView"
+        app:layout_constraintTop_toBottomOf="@id/pickUpPlanetTextView" />
+
+    <ImageView
+        android:id="@+id/thirdStarImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/rating_star_content_description"
+        android:src="@drawable/ic_star_filled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/secondStarImageView"
+        app:layout_constraintTop_toBottomOf="@id/pickUpPlanetTextView" />
+
+    <ImageView
+        android:id="@+id/fourthStarImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/rating_star_content_description"
+        android:src="@drawable/ic_star_filled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/thirdStarImageView"
+        app:layout_constraintTop_toBottomOf="@id/pickUpPlanetTextView" />
+
+    <ImageView
+        android:id="@+id/fifthStarImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/rating_star_content_description"
+        android:src="@drawable/ic_star_filled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/fourthStarImageView"
+        app:layout_constraintTop_toBottomOf="@id/pickUpPlanetTextView" />
+
+    <android.support.constraint.Group
+        android:id="@+id/starGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="firstStarImageView, secondStarImageView, thirdStarImageView, fourthStarImageView, fifthStarImageView" />
 
 </android.support.constraint.ConstraintLayout>
