@@ -35,6 +35,7 @@ abstract class TripListModule {
     }
 
     @Binds
+    @Suppress("unused")
     abstract fun bindTripListRepository(tripListRepositoryImpl: TripListRepositoryImpl): TripListRepository
 
 }

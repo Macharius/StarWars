@@ -1,10 +1,8 @@
 package com.remipradal.starwars
 
-import android.app.Application
 import com.remipradal.starwars.utils.DateTimeMoshiAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import io.reactivex.Scheduler
@@ -18,52 +16,43 @@ import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
-abstract class ApplicationModule {
+object ApplicationModule {
 
-    @Module
-    companion object {
-
-        @Singleton
-        @Provides
-        @JvmStatic
-        fun provideMoshi(dateTimeMoshiAdapter: DateTimeMoshiAdapter): Moshi {
-            return Moshi.Builder()
-                    .add(KotlinJsonAdapterFactory())
-                    .add(dateTimeMoshiAdapter)
-                    .build()
-        }
-
-        @Singleton
-        @Provides
-        @JvmStatic
-        fun provideRetrofit(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit {
-            return Retrofit.Builder()
-                    .baseUrl(BuildConfig.BASE_URL)
-                    .client(okHttpClient)
-                    .addConverterFactory(MoshiConverterFactory.create(moshi))
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .build()
-        }
-
-        @Singleton
-        @Provides
-        @JvmStatic
-        fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder().build()
-
-        @Provides
-        @JvmStatic
-        @Named("WORKER")
-        fun provideWorkerScheduler(): Scheduler = Schedulers.io()
-
-        @Provides
-        @JvmStatic
-        @Named("UI")
-        fun provideUiScheduler(): Scheduler = AndroidSchedulers.mainThread()
-
+    @Singleton
+    @Provides
+    @JvmStatic
+    fun provideMoshi(dateTimeMoshiAdapter: DateTimeMoshiAdapter): Moshi {
+        return Moshi.Builder()
+                .add(KotlinJsonAdapterFactory())
+                .add(dateTimeMoshiAdapter)
+                .build()
     }
 
+    @Singleton
+    @Provides
+    @JvmStatic
+    fun provideRetrofit(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit {
+        return Retrofit.Builder()
+                .baseUrl(BuildConfig.BASE_URL)
+                .client(okHttpClient)
+                .addConverterFactory(MoshiConverterFactory.create(moshi))
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build()
+    }
 
-    @Binds
-    abstract fun bindApplication(application: StarWarsTripApplication): Application
+    @Singleton
+    @Provides
+    @JvmStatic
+    fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder().build()
+
+    @Provides
+    @JvmStatic
+    @Named("WORKER")
+    fun provideWorkerScheduler(): Scheduler = Schedulers.io()
+
+    @Provides
+    @JvmStatic
+    @Named("UI")
+    fun provideUiScheduler(): Scheduler = AndroidSchedulers.mainThread()
 
 }
