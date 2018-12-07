@@ -26,10 +26,14 @@ interface ApplicationComponent : AndroidInjector<StarWarsTripApplication> {
 
 @Module
 abstract class ActivitiesInjectorModule {
+
     @ContributesAndroidInjector(modules = [TripListModule::class])
+    @Suppress("unused")
     abstract fun contributeTripListActivityInjector(): TripListActivity
 
     @ContributesAndroidInjector
+    @Suppress("unused")
     abstract fun contributeTripDetailActivityInjector(): TripDetailActivity
+
 }
 
