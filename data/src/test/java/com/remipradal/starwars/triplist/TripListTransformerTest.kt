@@ -2,13 +2,7 @@ package com.remipradal.starwars.triplist
 
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
-import com.remipradal.starwars.common.JsonPilot
-import com.remipradal.starwars.common.JsonPlanetStop
-import com.remipradal.starwars.common.JsonTrip
-import com.remipradal.starwars.common.Pilot
-import com.remipradal.starwars.common.PlanetStop
-import com.remipradal.starwars.common.Trip
-import com.remipradal.starwars.common.TripListTransformer
+import com.remipradal.starwars.common.*
 import org.assertj.core.api.Assertions.assertThat
 import org.joda.time.DateTime
 import org.junit.Test
@@ -42,6 +36,11 @@ class TripListTransformerTest {
                         name = "Coruscent",
                         imageUrl = "absolutePath/planet2/url",
                         passageDateTime = DateTime.parse("2018-12-9")
+                    ),
+                    durationMilliSeconds = 42,
+                    distance = Distance(
+                        unit = DistanceUnit.KILOMETERS,
+                        value = 212
                     )
                 ),
                 Trip(
@@ -56,6 +55,11 @@ class TripListTransformerTest {
                         name = "Coruscent",
                         imageUrl = "absolutePath/planet2/url",
                         passageDateTime = DateTime.parse("2018-12-9")
+                    ),
+                    durationMilliSeconds = 42,
+                    distance = Distance(
+                        unit = DistanceUnit.KILOMETERS,
+                        value = 212
                     )
                 )
             )
@@ -84,6 +88,11 @@ class TripListTransformerTest {
                     name = "Coruscent",
                     imageUrl = "absolutePath/planet2/url",
                     passageDateTime = DateTime.parse("2018-12-9")
+                ),
+                durationMilliSeconds = 42,
+                distance = Distance(
+                    unit = DistanceUnit.KILOMETERS,
+                    value = 212
                 )
             )
         )
@@ -117,11 +126,17 @@ class TripListTransformerTest {
             on { pictureUrl } doReturn "/planet2/url"
             on { passageDateTime } doReturn DateTime.parse("2018-12-9")
         }
+        val distance = mock<JsonDistance> {
+            on { unit } doReturn JsonDistanceUnit.KILOMETERS
+            on { value } doReturn 212
+        }
         return mock {
             on { this.id } doReturn tripId
             on { this.pilot } doReturn pilot
             on { this.pickUpPlanetStop } doReturn pickUpPlanetStop
             on { this.dropOffPlanetStop } doReturn dropOffPlanetStop
+            on { this.duration } doReturn 42
+            on { this.distance } doReturn distance
         }
     }
 }

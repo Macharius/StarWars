@@ -26,7 +26,14 @@ class TripListTransformer @Inject constructor(private val baseUrl: String) {
         id = id,
         pilot = pilot.toPilot(),
         pickUpPlanet = pickUpPlanetStop.toPlanetStop(),
-        dropOffPlanet = dropOffPlanetStop.toPlanetStop()
+        dropOffPlanet = dropOffPlanetStop.toPlanetStop(),
+        distance = distance.toDistance(),
+        durationMilliSeconds = duration
+    )
+
+    private fun JsonDistance.toDistance() = Distance(
+        value = value,
+        unit = DistanceUnit.KILOMETERS
     )
 
 }

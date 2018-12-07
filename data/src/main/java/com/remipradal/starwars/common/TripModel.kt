@@ -7,7 +7,7 @@ data class JsonTrip(
     @Json(name = "id") val id: Int,
     @Json(name = "pilot") val pilot: JsonPilot,
     @Json(name = "distance") val distance: JsonDistance,
-    @Json(name = "duration") val duration: Int,
+    @Json(name = "duration") val duration: Long,
     @Json(name = "pick_up") val pickUpPlanetStop: JsonPlanetStop,
     @Json(name = "drop_off") val dropOffPlanetStop: JsonPlanetStop
 )
