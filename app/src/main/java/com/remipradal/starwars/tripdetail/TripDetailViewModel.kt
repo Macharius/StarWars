@@ -5,8 +5,10 @@ data class TripDetailViewModel(
     val pilotAvatarUrl: String,
     val pickUpPlanetName: String,
     val pickUpPassageHour: String,
+    val pickUpPlanetImageUrl: String,
     val dropOffPlanetName: String,
     val dropOffPassageHour: String,
+    val dropOffPlanetImageUrl: String,
     val tripDistance: String,
     val tripDuration: String
 )

@@ -5,8 +5,12 @@ import android.support.constraint.ConstraintLayout
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.DownsampleStrategy
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
+import com.bumptech.glide.request.RequestOptions
 import com.remipradal.starwars.R
 import kotlinx.android.synthetic.main.view_trip_detail.view.*
+
 
 class TripDetailView : ConstraintLayout {
     constructor(context: Context) : super(context) {
@@ -27,7 +31,7 @@ class TripDetailView : ConstraintLayout {
 
     fun bindData(viewModel: TripDetailViewModel) {
         with(viewModel) {
-            Glide.with(this@TripDetailView).load(pilotAvatarUrl).into(pilotAvatarImageView)
+            loadImages()
 
             pilotNameTextView.text = pilotName
             pickUpPlanetNameTextView.text = pickUpPlanetName
@@ -40,5 +44,29 @@ class TripDetailView : ConstraintLayout {
             tripDistanceTextView.text = tripDistance
         }
     }
+
+    private fun TripDetailViewModel.loadImages() {
+        Glide.with(this@TripDetailView).run {
+            load(pilotAvatarUrl).transition(withCrossFade()).into(pilotAvatarImageView)
+            load(pickUpPlanetImageUrl)
+                .transition(withCrossFade())
+                .apply(
+                    RequestOptions()
+                        .downsample(DownsampleStrategy.NONE)
+                        .transform(PickUpPlanetPictureTransformation())
+                )
+                .into(pickUpPlanetImageView)
+
+            load(dropOffPlanetImageUrl)
+                .transition(withCrossFade())
+                .apply(
+                    RequestOptions()
+                        .downsample(DownsampleStrategy.NONE)
+                        .transform(DropOffPlanetPictureTransformation())
+                )
+                .into(dropOffPlanetImageView)
+        }
+    }
+
 }
 

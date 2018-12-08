@@ -18,8 +18,10 @@ class TripDetailModelToViewModelTransformer @Inject constructor(
             pilotAvatarUrl = pilot.avatarUrl,
             pickUpPlanetName = pickUpPlanet.name.toUpperCase(),
             pickUpPassageHour = timeFormatter.transformToString(pickUpPlanet.passageDateTime),
+            pickUpPlanetImageUrl = pickUpPlanet.imageUrl,
             dropOffPlanetName = dropOffPlanet.name.toUpperCase(),
             dropOffPassageHour = timeFormatter.transformToString(dropOffPlanet.passageDateTime),
+            dropOffPlanetImageUrl = dropOffPlanet.imageUrl,
             tripDistance = "${numberFormatter.format(distance.value)} KM",
             tripDuration = timeFormatter.transformToString(Duration.millis(trip.durationMilliSeconds))
         )

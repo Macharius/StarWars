@@ -134,13 +134,39 @@ class TripDetailModelToViewModelTransformerTest {
         assertThat(tripDetailViewModel.tripDistance).isEqualTo("2,478,572 KM")
     }
 
+    @Test
+    fun `transform should map pick up planet image url`() {
+        // Given
+        val trip = createMockTrip()
+
+        // When
+        val tripDetailViewModel = tripDetailModelToViewModelTransformer.transform(trip)
+
+        // Then
+        assertThat(tripDetailViewModel.pickUpPlanetImageUrl).isEqualTo("pickUpPlanetImageUrl")
+    }
+
+    @Test
+    fun `transform should map drop off planet image url`() {
+        // Given
+        val trip = createMockTrip()
+
+        // When
+        val tripDetailViewModel = tripDetailModelToViewModelTransformer.transform(trip)
+
+        // Then
+        assertThat(tripDetailViewModel.pickUpPlanetImageUrl).isEqualTo("dropOffPlanetImageUrl")
+    }
+
     private fun createMockTrip(
         pilotName: String = "Darth Vader",
         pilotAvatarUrl: String = "avatarUrl",
         pickUpPlanetName: String = "Dagobah",
         pickUpPassageDateTime: DateTime = DateTime.parse("2017-12-09T14:12:51Z"),
+        pickUpPlanetImageUrl: String = "pickUpPlanetImageUrl",
         dropOffPlanetName: String = "Coruscent",
         dropOffPassageHour: DateTime = DateTime.parse("2017-12-10T14:12:51Z"),
+        dropOffPlanetImageUrl: String = "dropOffPlanetImageUrl",
         tripDistanceKilometers: Long = 2478572,
         tripDurationMilliSeconds: Long = 19427000
     ): Trip {
@@ -152,11 +178,13 @@ class TripDetailModelToViewModelTransformerTest {
         val pickUpPlanet = mock<PlanetStop> {
             on { this.name } doReturn pickUpPlanetName
             on { this.passageDateTime } doReturn pickUpPassageDateTime
+            on { this.imageUrl } doReturn pickUpPlanetImageUrl
         }
 
         val dropOffPlanet = mock<PlanetStop> {
             on { this.name } doReturn dropOffPlanetName
             on { this.passageDateTime } doReturn dropOffPassageHour
+            on { this.imageUrl } doReturn dropOffPlanetImageUrl
         }
 
         val tripDistance = mock<Distance> {
