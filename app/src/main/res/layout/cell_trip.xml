@@ -32,6 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/pilotAvatarImageView"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
         tools:text="Darth Vader" />
 
     <TextView
@@ -44,6 +45,7 @@
         app:layout_constraintBottom_toTopOf="@id/firstStarImageView"
         app:layout_constraintStart_toStartOf="@id/pilotNameTextView"
         app:layout_constraintTop_toBottomOf="@id/pilotNameTextView"
+        app:layout_constraintVertical_chainStyle="packed"
         tools:text="Naboo" />
 
     <ImageView
@@ -79,7 +81,8 @@
         android:src="@drawable/ic_star_filled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/pickUpPlanetTextView"
-        app:layout_constraintTop_toBottomOf="@id/pickUpPlanetTextView" />
+        app:layout_constraintTop_toBottomOf="@id/pickUpPlanetTextView"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <ImageView
         android:id="@+id/secondStarImageView"
@@ -90,7 +93,7 @@
         android:src="@drawable/ic_star_filled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/firstStarImageView"
-        app:layout_constraintTop_toBottomOf="@id/pickUpPlanetTextView" />
+        app:layout_constraintTop_toTopOf="@id/fifthStarImageView" />
 
     <ImageView
         android:id="@+id/thirdStarImageView"
