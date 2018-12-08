@@ -42,7 +42,7 @@
         android:fontFamily="sans-serif-medium"
         android:lineSpacingExtra="0.7sp"
         android:textColor="@color/warmGrey"
-        app:layout_constraintBottom_toTopOf="@id/firstStarImageView"
+        app:layout_constraintBottom_toTopOf="@id/ratingView"
         app:layout_constraintStart_toStartOf="@id/pilotNameTextView"
         app:layout_constraintTop_toBottomOf="@id/pilotNameTextView"
         app:layout_constraintVertical_chainStyle="packed"
@@ -74,14 +74,14 @@
 
     <com.remipradal.starwars.common.RatingView
         android:id="@+id/ratingView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:emptyStarDrawable="@drawable/ic_star_empty_32dp"
+        app:filledStarDrawable="@drawable/ic_star_filled_32dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/pilotNameTextView"
         app:layout_constraintTop_toBottomOf="@id/pickUpPlanetTextView"
         app:layout_constraintVertical_chainStyle="packed"
-        app:emptyStarDrawable="@drawable/ic_star_empty_32dp"
-        app:filledStarDrawable="@drawable/ic_star_filled_32dp" />
+        tools:visibility="visible" />
 
 </android.support.constraint.ConstraintLayout>
