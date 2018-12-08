@@ -206,6 +206,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="@dimen/margin_small"
+        android:singleLine="true"
         android:ellipsize="end"
         app:layout_constraintEnd_toStartOf="@id/middleGuideline"
         app:layout_constraintStart_toEndOf="@id/startGuideline"
