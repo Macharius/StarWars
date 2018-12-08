@@ -12,33 +12,44 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
         android:contentDescription="@string/pick_up_planet_picture_content_description"
         app:layout_constraintBottom_toTopOf="@id/headerSeparationGuideline"
-        app:layout_constraintEnd_toStartOf="@id/middleGuideline"
+        app:layout_constraintEnd_toStartOf="@id/pickUpPlanetEndGuideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@color/warmGrey" />
-
 
     <ImageView
         android:id="@+id/dropOffPlanetImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
         android:contentDescription="@string/drop_off_planet_picture_content_description"
         app:layout_constraintBottom_toTopOf="@id/headerSeparationGuideline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/pilotAvatarImageView"
+        app:layout_constraintStart_toEndOf="@id/dropOffPlanetStartGuideline"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@color/colorAccent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/dropOffPlanetStartGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.26" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/pickUpPlanetEndGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.35" />
 
     <android.support.constraint.Guideline
         android:id="@+id/headerSeparationGuideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".4" />
+        app:layout_constraintGuide_percent=".35" />
 
     <android.support.constraint.Guideline
         android:id="@+id/startGuideline"
