@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import com.bumptech.glide.Glide
+import android.view.View
 import com.remipradal.starwars.R
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_trip_detail.*
@@ -54,27 +54,16 @@ class TripDetailActivity : DaggerAppCompatActivity(), TripDetailDisplay {
     }
 
     override fun displayTripDetail(tripDetailViewModel: TripDetailViewModel) {
-        with(tripDetailViewModel) {
-            Glide.with(this@TripDetailActivity).load(pilotAvatarUrl).into(pilotAvatarImageView)
-
-            pilotNameTextView.text = pilotName
-            pickUpPlanetNameTextView.text = pickUpPlanetName
-            pickUpTimeTextView.text = pickUpPassageHour
-
-            dropOffPlanetNameTextView.text = dropOffPlanetName
-            dropOffTimeTextView.text = dropOffPassageHour
-
-            tripDurationTextView.text = tripDuration
-            tripDistanceTextView.text = tripDistance
-        }
+        tripDetailView.bindData(tripDetailViewModel)
+        tripDetailView.visibility = View.VISIBLE
     }
 
     override fun showLoader() {
-        Log.d(TripDetailActivity::class.java.simpleName, "showLoader")
+        loader.visibility = View.VISIBLE
     }
 
     override fun hideLoader() {
-        Log.d(TripDetailActivity::class.java.simpleName, "hideLoader")
+        loader.visibility = View.GONE
     }
 
     override fun displayError() {
