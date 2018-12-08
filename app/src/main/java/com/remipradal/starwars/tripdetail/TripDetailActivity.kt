@@ -3,7 +3,7 @@ package com.remipradal.starwars.tripdetail
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.support.design.widget.Snackbar
 import android.view.MenuItem
 import android.view.View
 import com.remipradal.starwars.R
@@ -31,6 +31,7 @@ class TripDetailActivity : DaggerAppCompatActivity(), TripDetailDisplay {
         setContentView(R.layout.activity_trip_detail)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+        tripDetailPresenter.subscribe(this, intent.getIntExtra(TRIP_ID_EXTRA, 0))
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -43,14 +44,9 @@ class TripDetailActivity : DaggerAppCompatActivity(), TripDetailDisplay {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        tripDetailPresenter.subscribe(this, intent.getIntExtra(TRIP_ID_EXTRA, 0))
-    }
-
-    override fun onPause() {
+    override fun onDestroy() {
         tripDetailPresenter.unsubscribe()
-        super.onPause()
+        super.onDestroy()
     }
 
     override fun displayTripDetail(tripDetailViewModel: TripDetailViewModel) {
@@ -59,6 +55,7 @@ class TripDetailActivity : DaggerAppCompatActivity(), TripDetailDisplay {
     }
 
     override fun showLoader() {
+        tripDetailView.visibility = View.GONE
         loader.visibility = View.VISIBLE
     }
 
@@ -67,6 +64,7 @@ class TripDetailActivity : DaggerAppCompatActivity(), TripDetailDisplay {
     }
 
     override fun displayError() {
-        Log.d(TripDetailActivity::class.java.simpleName, "displayError")
+        Snackbar.make(findViewById(android.R.id.content), R.string.trip_list_error_message, Snackbar.LENGTH_INDEFINITE)
+            .show()
     }
 }

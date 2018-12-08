@@ -33,25 +33,23 @@ class TripListActivity : DaggerAppCompatActivity(), TripListDisplay {
                 ?.let { dividerItemDecoration.setDrawable(it) }
             addItemDecoration(dividerItemDecoration)
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
         tripListPresenter.subscribe(this)
     }
 
-    override fun onPause() {
+    override fun onDestroy() {
         tripListPresenter.unsubscribe()
-        super.onPause()
+        super.onDestroy()
     }
 
     override fun displayTripList(tripList: List<TripViewModel>) {
         tripListAdapter.tripViewModelList = tripList
         tripListAdapter.notifyDataSetChanged()
+        tripRecyclerView.visibility = View.VISIBLE
     }
 
     override fun showLoader() {
         loader.visibility = View.VISIBLE
+        tripRecyclerView.visibility = View.GONE
     }
 
     override fun hideLoader() {
