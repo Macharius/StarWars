@@ -4,15 +4,18 @@ import android.content.Context
 import android.support.constraint.ConstraintLayout
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.DownsampleStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 import com.bumptech.glide.request.RequestOptions
 import com.remipradal.starwars.R
+import com.remipradal.starwars.common.RatingViewModel
 import kotlinx.android.synthetic.main.view_trip_detail.view.*
 
 
 class TripDetailView : ConstraintLayout {
+
     constructor(context: Context) : super(context) {
         init(context)
     }
@@ -42,8 +45,23 @@ class TripDetailView : ConstraintLayout {
 
             tripDurationTextView.text = tripDuration
             tripDistanceTextView.text = tripDistance
+
+            displayPilotRating(pilotRatingViewModel)
         }
     }
+
+    private fun displayPilotRating(pilotRatingViewModel: RatingViewModel) = when (pilotRatingViewModel) {
+        RatingViewModel.NoRating -> {
+            noRatingTextView.visibility = View.VISIBLE
+            ratingView.visibility = View.GONE
+        }
+        is RatingViewModel.StarRating -> {
+            noRatingTextView.visibility = View.GONE
+            ratingView.visibility = View.VISIBLE
+            ratingView.bindRatingViewModel(pilotRatingViewModel)
+        }
+    }
+
 
     private fun TripDetailViewModel.loadImages() {
         Glide.with(this@TripDetailView).run {

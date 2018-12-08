@@ -278,7 +278,18 @@
         android:letterSpacing="0.21"
         android:textAllCaps="true"
         android:textColor="@color/warmGrey"
+        tools:visibility="gone"
         app:layout_constraintEnd_toStartOf="@id/endGuideline"
         app:layout_constraintStart_toEndOf="@id/startGuideline"
         app:layout_constraintTop_toBottomOf="@id/pilotRatingLabelTextView" />
+
+    <com.remipradal.starwars.common.RatingView
+        android:id="@+id/ratingView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/endGuideline"
+        app:layout_constraintStart_toEndOf="@id/startGuideline"
+        app:layout_constraintTop_toBottomOf="@id/pilotRatingLabelTextView"
+        app:emptyStarDrawable="@drawable/ic_star_empty_32dp"
+        app:filledStarDrawable="@drawable/ic_star_filled_32dp" />
 </merge>

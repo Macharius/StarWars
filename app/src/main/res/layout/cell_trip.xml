@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -82,7 +81,7 @@
         app:layout_constraintStart_toStartOf="@id/pilotNameTextView"
         app:layout_constraintTop_toBottomOf="@id/pickUpPlanetTextView"
         app:layout_constraintVertical_chainStyle="packed"
-        custom:emptyStarDrawable="@drawable/ic_star_empty"
-        custom:filledStarDrawable="@drawable/ic_star_filled" />
+        app:emptyStarDrawable="@drawable/ic_star_empty_32dp"
+        app:filledStarDrawable="@drawable/ic_star_filled_32dp" />
 
 </android.support.constraint.ConstraintLayout>

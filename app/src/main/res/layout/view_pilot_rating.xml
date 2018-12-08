@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
@@ -10,10 +11,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/rating_star_content_description"
-        android:src="@drawable/ic_star_filled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_star_filled_32dp" />
 
     <ImageView
         android:id="@+id/secondStarImageView"
@@ -21,10 +22,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/rating_star_content_description"
-        android:src="@drawable/ic_star_filled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/firstStarImageView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_star_filled_32dp" />
 
     <ImageView
         android:id="@+id/thirdStarImageView"
@@ -32,10 +33,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/rating_star_content_description"
-        android:src="@drawable/ic_star_filled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/secondStarImageView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_star_filled_32dp" />
 
     <ImageView
         android:id="@+id/fourthStarImageView"
@@ -43,10 +44,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/rating_star_content_description"
-        android:src="@drawable/ic_star_filled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/thirdStarImageView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_star_filled_32dp" />
 
     <ImageView
         android:id="@+id/fifthStarImageView"
@@ -54,9 +55,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/rating_star_content_description"
-        android:src="@drawable/ic_star_filled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/fourthStarImageView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_star_filled_32dp" />
+
 </android.support.constraint.ConstraintLayout>

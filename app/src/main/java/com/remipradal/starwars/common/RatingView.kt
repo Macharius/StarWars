@@ -25,9 +25,9 @@ class RatingView : ConstraintLayout {
         attrs?.let {
             val typedArray = context.obtainStyledAttributes(it, R.styleable.RatingView, 0, 0)
             val filledStarDrawableResId =
-                typedArray.getResourceId(R.styleable.RatingView_filledStarDrawable, R.drawable.ic_star_filled)
+                typedArray.getResourceId(R.styleable.RatingView_filledStarDrawable, R.drawable.ic_star_filled_32dp)
             val emptyStarDrawableResourceId =
-                typedArray.getResourceId(R.styleable.RatingView_emptyStarDrawable, R.drawable.ic_star_empty)
+                typedArray.getResourceId(R.styleable.RatingView_emptyStarDrawable, R.drawable.ic_star_empty_32dp)
             typedArray.recycle()
             filledStarDrawable = ContextCompat.getDrawable(context, filledStarDrawableResId)
             emptyStarDrawable = ContextCompat.getDrawable(context, emptyStarDrawableResourceId)
