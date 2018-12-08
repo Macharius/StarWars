@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -72,66 +73,16 @@
         app:layout_constraintTop_toTopOf="@id/pickUpPlanetTextView"
         tools:text="Coruscent" />
 
-    <ImageView
-        android:id="@+id/firstStarImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:contentDescription="@string/rating_star_content_description"
-        android:src="@drawable/ic_star_filled"
+    <com.remipradal.starwars.common.RatingView
+        android:id="@+id/ratingView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/pickUpPlanetTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/pilotNameTextView"
         app:layout_constraintTop_toBottomOf="@id/pickUpPlanetTextView"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <ImageView
-        android:id="@+id/secondStarImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:contentDescription="@string/rating_star_content_description"
-        android:src="@drawable/ic_star_filled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/firstStarImageView"
-        app:layout_constraintTop_toTopOf="@id/fifthStarImageView" />
-
-    <ImageView
-        android:id="@+id/thirdStarImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:contentDescription="@string/rating_star_content_description"
-        android:src="@drawable/ic_star_filled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/secondStarImageView"
-        app:layout_constraintTop_toBottomOf="@id/pickUpPlanetTextView" />
-
-    <ImageView
-        android:id="@+id/fourthStarImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:contentDescription="@string/rating_star_content_description"
-        android:src="@drawable/ic_star_filled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/thirdStarImageView"
-        app:layout_constraintTop_toBottomOf="@id/pickUpPlanetTextView" />
-
-    <ImageView
-        android:id="@+id/fifthStarImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:contentDescription="@string/rating_star_content_description"
-        android:src="@drawable/ic_star_filled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/fourthStarImageView"
-        app:layout_constraintTop_toBottomOf="@id/pickUpPlanetTextView" />
-
-    <android.support.constraint.Group
-        android:id="@+id/starGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="firstStarImageView, secondStarImageView, thirdStarImageView, fourthStarImageView, fifthStarImageView" />
+        app:layout_constraintVertical_chainStyle="packed"
+        custom:emptyStarDrawable="@drawable/ic_star_empty"
+        custom:filledStarDrawable="@drawable/ic_star_filled" />
 
 </android.support.constraint.ConstraintLayout>

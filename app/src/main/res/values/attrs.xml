@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RatingView">
+        <attr name="filledStarDrawable" format="reference" />
+        <attr name="emptyStarDrawable" format="reference" />
+
+    </declare-styleable>
+</resources>
