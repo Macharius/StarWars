@@ -290,6 +290,6 @@
         app:layout_constraintEnd_toStartOf="@id/endGuideline"
         app:layout_constraintStart_toEndOf="@id/startGuideline"
         app:layout_constraintTop_toBottomOf="@id/pilotRatingLabelTextView"
-        app:emptyStarDrawable="@drawable/ic_star_empty_32dp"
-        app:filledStarDrawable="@drawable/ic_star_filled_32dp" />
+        app:emptyStarDrawable="@drawable/ic_star_empty_40dp"
+        app:filledStarDrawable="@drawable/ic_star_filled_40dp" />
 </merge>
