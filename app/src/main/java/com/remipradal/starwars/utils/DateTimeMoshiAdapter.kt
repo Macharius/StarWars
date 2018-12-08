@@ -6,6 +6,7 @@ import org.joda.time.DateTime
 import javax.inject.Inject
 
 class DateTimeMoshiAdapter @Inject constructor() {
+
     @Suppress("unused")
     @ToJson
     fun toJson(dateTime: DateTime): String {

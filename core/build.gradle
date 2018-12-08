@@ -3,11 +3,8 @@ apply plugin: 'java-library'
 
 dependencies {
     implementation rootProject.ext.kotlinStdLibDependency
-
     implementation rootProject.ext.javaxInjectDependency
-
     implementation rootProject.ext.jodaTimeDependency
-
     implementation rootProject.ext.rxKotlinDependency
 
     testImplementation rootProject.ext.junitDependency

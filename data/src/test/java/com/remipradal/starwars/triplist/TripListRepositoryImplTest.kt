@@ -15,9 +15,12 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class TripListRepositoryImplTest {
 
-    @InjectMocks private lateinit var tripListRepositoryImpl: TripListRepositoryImpl
-    @Mock private lateinit var service: TripListRepositoryImpl.Service
-    @Mock private lateinit var tripListTransformer: TripListTransformer
+    @InjectMocks
+    private lateinit var tripListRepositoryImpl: TripListRepositoryImpl
+    @Mock
+    private lateinit var service: TripListRepositoryImpl.Service
+    @Mock
+    private lateinit var tripListTransformer: TripListTransformer
 
     @Test
     fun `getTripList should call service and map result to domain model`() {

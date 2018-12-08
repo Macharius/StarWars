@@ -1,17 +1,16 @@
 <resources>
     <string name="app_name">StarWars</string>
-    <string name="trip_list_title">Last Trips</string>
-    <string name="trip_list_error_message">You are lost Anakin</string>
-
-    <string name="pilot_avatar_content_description">Pilote\'s avatar</string>
     <string name="arrow_content_description">Arrow</string>
-    <string name="rating_star_content_description">Rating star</string>
-    <string name="pick_up_label">Departure</string>
     <string name="drop_off_label">Arrival</string>
+    <string name="drop_off_planet_picture_content_description">Drop off planet picture</string>
+    <string name="no_rating_yet">User didn\'t rate yet</string>
+    <string name="pick_up_label">Departure</string>
+    <string name="pick_up_planet_picture_content_description">Pick up planet picture</string>
+    <string name="pilot_avatar_content_description">Pilote\'s avatar</string>
+    <string name="pilot_rating">Pilot Rating</string>
+    <string name="rating_star_content_description">Rating star</string>
     <string name="trip_distance_label">Trip Distance</string>
     <string name="trip_duration_label">Trip Duration</string>
-    <string name="pilot_rating">Pilot Rating</string>
-    <string name="no_rating_yet">User didn\'t rate yet</string>
-    <string name="pick_up_planet_picture_content_description">Pick up planet picture</string>
-    <string name="drop_off_planet_picture_content_description">Drop off planet picture</string>
+    <string name="trip_list_error_message">You are lost Anakin</string>
+    <string name="trip_list_title">Last Trips</string>
 </resources>

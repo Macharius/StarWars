@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:background="@color/colorPrimaryDark">
+    tools:background="@color/color_primary_dark">
 
     <ImageView
         android:id="@+id/pilotAvatarImageView"
@@ -15,7 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@color/warmGrey" />
+        tools:src="@color/warm_grey" />
 
     <TextView
         android:id="@+id/pilotNameTextView"
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
         android:lineSpacingExtra="0.7sp"
-        android:textColor="@color/warmGrey"
+        android:textColor="@color/warm_grey"
         app:layout_constraintBottom_toTopOf="@id/ratingView"
         app:layout_constraintStart_toStartOf="@id/pilotNameTextView"
         app:layout_constraintTop_toBottomOf="@id/pilotNameTextView"
@@ -66,7 +66,7 @@
         android:layout_marginStart="16dp"
         android:fontFamily="sans-serif-medium"
         android:lineSpacingExtra="0.7sp"
-        android:textColor="@color/warmGrey"
+        android:textColor="@color/warm_grey"
         app:layout_constraintBottom_toBottomOf="@id/pickUpPlanetTextView"
         app:layout_constraintStart_toEndOf="@id/stationSeparatorImageView"
         app:layout_constraintTop_toTopOf="@id/pickUpPlanetTextView"

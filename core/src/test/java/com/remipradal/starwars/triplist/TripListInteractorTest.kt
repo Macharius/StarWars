@@ -14,11 +14,13 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class TripListInteractorTest {
 
-    @InjectMocks private lateinit var tripListInteractor: TripListInteractor
-    @Mock private lateinit var tripListRepository: TripListRepository
+    @InjectMocks
+    private lateinit var tripListInteractor: TripListInteractor
+    @Mock
+    private lateinit var tripListRepository: TripListRepository
 
     @Test
-    fun `getTripList should return `() {
+    fun `getTripList should return repository single`() {
         // Given
         val expectedTripList = mock<Single<List<Trip>>>()
         given(tripListRepository.getTripList()).willReturn(expectedTripList)

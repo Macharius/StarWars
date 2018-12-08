@@ -25,6 +25,7 @@ interface ApplicationComponent : AndroidInjector<StarWarsTripApplication> {
 
     @Component.Builder
     abstract class Builder : AndroidInjector.Builder<StarWarsTripApplication>()
+
 }
 
 @Module
