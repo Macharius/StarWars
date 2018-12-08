@@ -48,7 +48,7 @@ class TripViewHolder(
                 }
             }
 
-            setOnClickListener { onClickCallback(tripViewModel.id) }
+            hitBoxView.setOnClickListener { onClickCallback(tripViewModel.id) }
         }
     }
 
