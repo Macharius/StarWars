@@ -14,8 +14,8 @@ abstract class TripListModule {
 
         @Provides
         @JvmStatic
-        fun provideService(retrofit: Retrofit): TripListRepositoryImpl.Service {
-            return retrofit.create(TripListRepositoryImpl.Service::class.java)
+        fun provideService(retrofit: Retrofit): NetworkTripListRepository.Service {
+            return retrofit.create(NetworkTripListRepository.Service::class.java)
         }
 
         @Provides
@@ -26,6 +26,6 @@ abstract class TripListModule {
 
     @Binds
     @Suppress("unused")
-    abstract fun bindTripListRepository(tripListRepositoryImpl: TripListRepositoryImpl): TripListRepository
+    abstract fun bindTripListRepository(networkTripListRepository: NetworkTripListRepository): TripListRepository
 
 }

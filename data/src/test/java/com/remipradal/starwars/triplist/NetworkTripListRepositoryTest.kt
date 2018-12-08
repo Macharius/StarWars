@@ -13,12 +13,12 @@ import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class TripListRepositoryImplTest {
+class NetworkTripListRepositoryTest {
 
     @InjectMocks
-    private lateinit var tripListRepositoryImpl: TripListRepositoryImpl
+    private lateinit var networkTripListRepository: NetworkTripListRepository
     @Mock
-    private lateinit var service: TripListRepositoryImpl.Service
+    private lateinit var service: NetworkTripListRepository.Service
     @Mock
     private lateinit var tripListTransformer: TripListTransformer
 
@@ -32,7 +32,7 @@ class TripListRepositoryImplTest {
         given(tripListTransformer.transformJsonTripListToDomainModel(element)).willReturn(expectedTripList)
 
         // When
-        val tripListResponse = tripListRepositoryImpl.getTripList()
+        val tripListResponse = networkTripListRepository.getTripList()
 
         // Then
         tripListResponse.test().assertResult(expectedTripList)

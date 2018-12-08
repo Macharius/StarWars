@@ -9,7 +9,7 @@ import retrofit2.http.Headers
 import retrofit2.http.Path
 import javax.inject.Inject
 
-class TripDetailRepositoryImpl @Inject constructor(
+class NetworkTripDetailRepository @Inject constructor(
     private val service: Service,
     private val tripListTransformer: TripListTransformer
 ) : TripDetailRepository {

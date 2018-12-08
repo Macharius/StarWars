@@ -8,7 +8,7 @@ import retrofit2.http.GET
 import retrofit2.http.Headers
 import javax.inject.Inject
 
-class TripListRepositoryImpl @Inject constructor(
+class NetworkTripListRepository @Inject constructor(
     private val service: Service,
     private val tripListTransformer: TripListTransformer
 ) : TripListRepository {

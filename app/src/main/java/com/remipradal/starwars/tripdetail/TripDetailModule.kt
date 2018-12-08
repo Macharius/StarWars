@@ -14,8 +14,8 @@ abstract class TripDetailModule {
 
         @Provides
         @JvmStatic
-        fun provideService(retrofit: Retrofit): TripDetailRepositoryImpl.Service {
-            return retrofit.create(TripDetailRepositoryImpl.Service::class.java)
+        fun provideService(retrofit: Retrofit): NetworkTripDetailRepository.Service {
+            return retrofit.create(NetworkTripDetailRepository.Service::class.java)
         }
 
         @Provides
@@ -26,5 +26,5 @@ abstract class TripDetailModule {
 
     @Binds
     @Suppress("unused")
-    abstract fun bindTripDetailRepository(tripDetailRepositoryImpl: TripDetailRepositoryImpl): TripDetailRepository
+    abstract fun bindTripDetailRepository(networkTripDetailRepository: NetworkTripDetailRepository): TripDetailRepository
 }
