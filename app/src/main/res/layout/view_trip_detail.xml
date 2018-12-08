@@ -13,6 +13,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+        android:contentDescription="@string/pick_up_planet_picture_content_description"
         app:layout_constraintBottom_toTopOf="@id/headerSeparationGuideline"
         app:layout_constraintEnd_toStartOf="@id/middleGuideline"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +26,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
+        android:contentDescription="@string/drop_off_planet_picture_content_description"
         app:layout_constraintBottom_toTopOf="@id/headerSeparationGuideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/pilotAvatarImageView"
@@ -36,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".45" />
+        app:layout_constraintGuide_percent=".4" />
 
     <android.support.constraint.Guideline
         android:id="@+id/startGuideline"
@@ -119,6 +121,7 @@
         android:letterSpacing="0.19"
         android:textColor="@color/white"
         android:textStyle="bold"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@id/middleGuideline"
         app:layout_constraintStart_toEndOf="@id/startGuideline"
         app:layout_constraintTop_toBottomOf="@id/pickUpLabel"
@@ -163,6 +166,8 @@
         android:letterSpacing="0.19"
         android:textColor="@color/white"
         android:textStyle="bold"
+        android:textSize="16sp"
+
         app:layout_constraintEnd_toStartOf="@id/endGuideline"
         app:layout_constraintStart_toEndOf="@id/middleGuideline"
         app:layout_constraintTop_toBottomOf="@id/dropOffLabel"
@@ -207,6 +212,9 @@
         android:letterSpacing="0.19"
         android:textColor="@color/white"
         android:textStyle="bold"
+        android:textSize="16sp"
+        android:ellipsize="end"
+        android:singleLine="true"
         app:layout_constraintEnd_toStartOf="@id/middleGuideline"
         app:layout_constraintStart_toEndOf="@id/startGuideline"
         app:layout_constraintTop_toBottomOf="@id/tripDistanceLabelTextView"
@@ -237,8 +245,40 @@
         android:letterSpacing="0.19"
         android:textColor="@color/white"
         android:textStyle="bold"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@id/endGuideline"
         app:layout_constraintStart_toEndOf="@id/middleGuideline"
         app:layout_constraintTop_toBottomOf="@id/tripDistanceLabelTextView"
         tools:text="5:10:11" />
+
+    <TextView
+        android:id="@+id/pilotRatingLabelTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:lineSpacingExtra="0.7sp"
+        android:text="@string/pilot_rating"
+        android:textColor="@color/warmGrey"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toStartOf="@id/middleGuideline"
+        app:layout_constraintStart_toEndOf="@id/startGuideline"
+        app:layout_constraintTop_toBottomOf="@id/tripDistanceTextView" />
+
+    <TextView
+        android:id="@+id/noRatingTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        android:text="@string/no_rating_yet"
+        android:letterSpacing="0.21"
+        android:textAllCaps="true"
+        android:textColor="@color/warmGrey"
+        app:layout_constraintEnd_toStartOf="@id/endGuideline"
+        app:layout_constraintStart_toEndOf="@id/startGuideline"
+        app:layout_constraintTop_toBottomOf="@id/pilotRatingLabelTextView" />
 </merge>

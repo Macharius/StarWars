@@ -10,4 +10,8 @@
     <string name="drop_off_label">Arrival</string>
     <string name="trip_distance_label">Trip Distance</string>
     <string name="trip_duration_label">Trip Duration</string>
+    <string name="pilot_rating">Pilot Rating</string>
+    <string name="no_rating_yet">User didn\'t rate yet</string>
+    <string name="pick_up_planet_picture_content_description">Pick up planet picture</string>
+    <string name="drop_off_planet_picture_content_description">Drop off planet picture</string>
 </resources>
