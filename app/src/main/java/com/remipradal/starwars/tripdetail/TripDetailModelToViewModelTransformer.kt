@@ -1,5 +1,6 @@
 package com.remipradal.starwars.tripdetail
 
+import com.remipradal.starwars.common.RatingViewModelTransformer
 import com.remipradal.starwars.common.Trip
 import org.joda.time.DateTime
 import org.joda.time.Duration
@@ -10,12 +11,14 @@ import javax.inject.Inject
 
 class TripDetailModelToViewModelTransformer @Inject constructor(
     private val timeFormatter: TimeFormatter,
-    private val numberFormatter: NumberFormatter
+    private val numberFormatter: NumberFormatter,
+    private val ratingViewModelTransformer: RatingViewModelTransformer
 ) {
     fun transform(trip: Trip) = with(trip) {
         TripDetailViewModel(
             pilotName = pilot.name.toUpperCase(),
             pilotAvatarUrl = pilot.avatarUrl,
+            pilotRatingViewModel = ratingViewModelTransformer.transformToRatingViewModel(pilot.rating),
             pickUpPlanetName = pickUpPlanet.name.toUpperCase(),
             pickUpPassageHour = timeFormatter.transformToString(pickUpPlanet.passageDateTime),
             pickUpPlanetImageUrl = pickUpPlanet.imageUrl,

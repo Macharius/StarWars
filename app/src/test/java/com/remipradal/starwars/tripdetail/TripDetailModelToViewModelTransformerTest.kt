@@ -4,10 +4,7 @@ import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.given
 import com.nhaarman.mockitokotlin2.mock
-import com.remipradal.starwars.common.Distance
-import com.remipradal.starwars.common.Pilot
-import com.remipradal.starwars.common.PlanetStop
-import com.remipradal.starwars.common.Trip
+import com.remipradal.starwars.common.*
 import org.assertj.core.api.Assertions.assertThat
 import org.joda.time.DateTime
 import org.joda.time.Duration
@@ -27,6 +24,8 @@ class TripDetailModelToViewModelTransformerTest {
     private lateinit var timeFormatter: TimeFormatter
     @Mock
     private lateinit var numberFormatter: NumberFormatter
+    @Mock
+    private lateinit var ratingViewModelTransformer: RatingViewModelTransformer
 
     @Before
     fun setUp() {
@@ -34,6 +33,7 @@ class TripDetailModelToViewModelTransformerTest {
         given(timeFormatter.transformToString(any<Duration>())).willReturn("10:10")
 
         given(numberFormatter.format(2478572)).willReturn("2,478,572")
+        given(ratingViewModelTransformer.transformToRatingViewModel(1.2f)).willReturn(RatingViewModel.NoRating)
     }
 
     @Test
@@ -155,7 +155,19 @@ class TripDetailModelToViewModelTransformerTest {
         val tripDetailViewModel = tripDetailModelToViewModelTransformer.transform(trip)
 
         // Then
-        assertThat(tripDetailViewModel.pickUpPlanetImageUrl).isEqualTo("dropOffPlanetImageUrl")
+        assertThat(tripDetailViewModel.dropOffPlanetImageUrl).isEqualTo("dropOffPlanetImageUrl")
+    }
+
+    @Test
+    fun `transform should transform rating into view model`() {
+        // Given
+        val trip = createMockTrip()
+
+        // When
+        val tripDetailViewModel = tripDetailModelToViewModelTransformer.transform(trip)
+
+        // Then
+        assertThat(tripDetailViewModel.pilotRatingViewModel).isEqualTo(RatingViewModel.NoRating)
     }
 
     private fun createMockTrip(
@@ -168,11 +180,13 @@ class TripDetailModelToViewModelTransformerTest {
         dropOffPassageHour: DateTime = DateTime.parse("2017-12-10T14:12:51Z"),
         dropOffPlanetImageUrl: String = "dropOffPlanetImageUrl",
         tripDistanceKilometers: Long = 2478572,
-        tripDurationMilliSeconds: Long = 19427000
+        tripDurationMilliSeconds: Long = 19427000,
+        rating: Float = 1.2f
     ): Trip {
         val pilot = mock<Pilot> {
             on { this.avatarUrl } doReturn pilotAvatarUrl
             on { this.name } doReturn pilotName
+            on { this.rating } doReturn rating
         }
 
         val pickUpPlanet = mock<PlanetStop> {

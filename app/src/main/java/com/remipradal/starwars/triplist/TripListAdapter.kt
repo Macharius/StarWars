@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.remipradal.starwars.R
+import com.remipradal.starwars.common.RatingViewModel
 import kotlinx.android.synthetic.main.cell_trip.view.*
 
 class TripListAdapter(private val onClickCallback: ((TripId) -> Unit)) : RecyclerView.Adapter<TripViewHolder>() {
@@ -41,11 +42,11 @@ class TripViewHolder(
             pickUpPlanetTextView.text = tripViewModel.pickUpPlanetName
             dropOffTextView.text = tripViewModel.dropOffPlanetName
 
-            when (tripViewModel.pilotRating) {
-                is Rating.NoRating -> starGroup.visibility = View.GONE
-                is Rating.StarRating -> {
+            when (tripViewModel.pilotRatingViewModel) {
+                is RatingViewModel.NoRating -> starGroup.visibility = View.GONE
+                is RatingViewModel.StarRating -> {
                     starGroup.visibility = View.VISIBLE
-                    bindRating(tripViewModel.pilotRating)
+                    bindRating(tripViewModel.pilotRatingViewModel)
                 }
             }
 
@@ -53,10 +54,10 @@ class TripViewHolder(
         }
     }
 
-    private fun bindRating(rating: Rating) = with(itemView) {
+    private fun bindRating(rating: RatingViewModel) = with(itemView) {
         when (rating) {
-            is Rating.NoRating -> starGroup.visibility = View.GONE
-            is Rating.StarRating -> {
+            is RatingViewModel.NoRating -> starGroup.visibility = View.GONE
+            is RatingViewModel.StarRating -> {
                 starGroup.visibility = View.VISIBLE
                 mapOf(
                     firstStarImageView to rating.firstStar,
@@ -69,15 +70,15 @@ class TripViewHolder(
         }
     }
 
-    private fun applyStarRating(starImageView: ImageView, starType: Rating.StarType) {
+    private fun applyStarRating(starImageView: ImageView, starType: RatingViewModel.StarType) {
         val starDrawable = getStarDrawable(starType)
         starImageView.setImageDrawable(ContextCompat.getDrawable(starImageView.context, starDrawable))
     }
 
     @DrawableRes
-    private fun getStarDrawable(starType: Rating.StarType) = when (starType) {
-        Rating.StarType.FILLED -> R.drawable.ic_star_filled
-        Rating.StarType.EMPTY -> R.drawable.ic_star_empty
+    private fun getStarDrawable(starType: RatingViewModel.StarType) = when (starType) {
+        RatingViewModel.StarType.FILLED -> R.drawable.ic_star_filled
+        RatingViewModel.StarType.EMPTY -> R.drawable.ic_star_empty
     }
 
 }
