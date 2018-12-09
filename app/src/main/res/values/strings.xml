@@ -13,4 +13,5 @@
     <string name="trip_duration_label">Trip Duration</string>
     <string name="trip_list_error_message">You are lost Anakin</string>
     <string name="trip_list_title">Last Trips</string>
+    <string name="unit_kilometers">km</string>
 </resources>

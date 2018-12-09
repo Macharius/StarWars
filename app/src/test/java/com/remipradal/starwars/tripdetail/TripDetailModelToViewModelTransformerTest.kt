@@ -1,9 +1,11 @@
 package com.remipradal.starwars.tripdetail
 
+import android.content.res.Resources
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.given
 import com.nhaarman.mockitokotlin2.mock
+import com.remipradal.starwars.R
 import com.remipradal.starwars.common.*
 import org.assertj.core.api.Assertions.assertThat
 import org.joda.time.DateTime
@@ -26,6 +28,8 @@ class TripDetailModelToViewModelTransformerTest {
     private lateinit var numberFormatter: NumberFormatter
     @Mock
     private lateinit var ratingViewModelTransformer: RatingViewModelTransformer
+    @Mock
+    private lateinit var resources: Resources
 
     @Before
     fun setUp() {
@@ -34,6 +38,8 @@ class TripDetailModelToViewModelTransformerTest {
 
         given(numberFormatter.format(2478572)).willReturn("2,478,572")
         given(ratingViewModelTransformer.transformToRatingViewModel(1.2f)).willReturn(RatingViewModel.NoRating)
+
+        given(resources.getString(R.string.unit_kilometers)).willReturn("km")
     }
 
     @Test
@@ -203,6 +209,7 @@ class TripDetailModelToViewModelTransformerTest {
 
         val tripDistance = mock<Distance> {
             on { this.value } doReturn tripDistanceKilometers
+            on { this.unit } doReturn DistanceUnit.KILOMETERS
         }
 
         return mock {

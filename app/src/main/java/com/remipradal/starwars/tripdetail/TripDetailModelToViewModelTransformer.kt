@@ -1,5 +1,9 @@
 package com.remipradal.starwars.tripdetail
 
+import android.content.res.Resources
+import com.remipradal.starwars.R
+import com.remipradal.starwars.common.Distance
+import com.remipradal.starwars.common.DistanceUnit
 import com.remipradal.starwars.common.RatingViewModelTransformer
 import com.remipradal.starwars.common.Trip
 import org.joda.time.DateTime
@@ -10,10 +14,12 @@ import java.text.NumberFormat
 import javax.inject.Inject
 
 class TripDetailModelToViewModelTransformer @Inject constructor(
+    private val resources: Resources,
     private val timeFormatter: TimeFormatter,
     private val numberFormatter: NumberFormatter,
     private val ratingViewModelTransformer: RatingViewModelTransformer
 ) {
+
     fun transform(trip: Trip) = with(trip) {
         TripDetailViewModel(
             pilotName = pilot.name.toUpperCase(),
@@ -25,9 +31,22 @@ class TripDetailModelToViewModelTransformer @Inject constructor(
             dropOffPlanetName = dropOffPlanet.name.toUpperCase(),
             dropOffPassageHour = timeFormatter.transformToString(dropOffPlanet.passageDateTime),
             dropOffPlanetImageUrl = dropOffPlanet.imageUrl,
-            tripDistance = "${numberFormatter.format(distance.value)} KM",
+            tripDistance = distance.transformToString(),
             tripDuration = timeFormatter.transformToString(Duration.millis(trip.durationMilliSeconds))
         )
+    }
+
+    private fun Distance.transformToString(): String {
+        return StringBuilder()
+            .append(numberFormatter.format(value))
+            .append(' ')
+            .append(
+                when (unit) {
+                    DistanceUnit.KILOMETERS -> resources.getString(R.string.unit_kilometers).toUpperCase()
+                }
+            )
+            .toString()
+
     }
 }
 

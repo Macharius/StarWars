@@ -1,5 +1,6 @@
 package com.remipradal.starwars
 
+import android.content.res.Resources
 import com.remipradal.starwars.common.TripListTransformer
 import com.remipradal.starwars.utils.DateTimeMoshiAdapter
 import com.squareup.moshi.Moshi
@@ -61,5 +62,12 @@ object ApplicationModule {
     @JvmStatic
     @Named("UI")
     fun provideUiScheduler(): Scheduler = AndroidSchedulers.mainThread()
+
+    @Provides
+    @JvmStatic
+    @Singleton
+    fun provideResources(application: StarWarsTripApplication): Resources {
+        return application.resources
+    }
 
 }
