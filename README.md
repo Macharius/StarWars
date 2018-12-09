@@ -13,3 +13,4 @@ It contains all the required features and even a little bit more. But of course 
  * Handle landscape orientation
  * Add pull to refresh in order to require fresher data
  * Add a signing config and check if there is no runtime issue with the current Proguard conf
+ * Handle gracefully transition between loader and view (avoid blinking effect if network call is too fast)
