@@ -5,11 +5,11 @@ It contains all the required features and even a little bit more. But of course 
 
 ## What to do with more time ?
  * Put image placeholder in case image loading fails
- *  Add transition between the two screens (by sharing the pilot avatar picture )
+ * Add transition between the two screens (by sharing the pilot avatar picture )
  * Integrate a nicer placeholder when the data loading fails or returns an empty value
  * Add a memory cache repository
  * Add a persisted cache repository
  * Use a CollapsingToolbarLayout for detail view to handle small screens in a better way
- * Handle portrait orientation
+ * Handle landscape orientation
  * Add pull to refresh in order to require fresher data
  * Add a signing config and check if there is no runtime issue with the current Proguard conf
