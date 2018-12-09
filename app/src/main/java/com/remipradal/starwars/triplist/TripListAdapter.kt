@@ -38,7 +38,7 @@ class TripViewHolder(
             Glide.with(this).load(tripViewModel.pilotAvatarUrl).into(pilotAvatarImageView)
             pilotNameTextView.text = tripViewModel.pilotName
             pickUpPlanetTextView.text = tripViewModel.pickUpPlanetName
-            dropOffTextView.text = tripViewModel.dropOffPlanetName
+            //dropOffTextView.text = tripViewModel.dropOffPlanetName
 
             when (tripViewModel.pilotRatingViewModel) {
                 is RatingViewModel.NoRating -> ratingView.visibility = View.GONE

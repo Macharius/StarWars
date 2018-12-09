@@ -22,7 +22,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_medium"
-        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_medium"
         android:fontFamily="sans-serif"
         android:letterSpacing="0.19"
         android:lineSpacingExtra="1.3sp"
@@ -43,58 +43,37 @@
         android:fontFamily="sans-serif-medium"
         android:lineSpacingExtra="0.7sp"
         android:textColor="@color/warm_grey"
+        android:layout_marginTop="4dp"
+        app:layout_goneMarginBottom="@dimen/margin_medium"
         app:layout_constraintBottom_toTopOf="@id/ratingView"
         app:layout_constraintStart_toStartOf="@id/pilotNameTextView"
         app:layout_constraintTop_toBottomOf="@id/pilotNameTextView"
         app:layout_constraintVertical_chainStyle="packed"
         tools:text="Naboo" />
 
-    <ImageView
-        android:id="@+id/stationSeparatorImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="@dimen/margin_medium"
-        android:contentDescription="@string/arrow_content_description"
-        android:src="@drawable/ic_arrow"
-        app:layout_constraintBottom_toBottomOf="@id/pickUpPlanetTextView"
-        app:layout_constraintStart_toEndOf="@id/pickUpPlanetTextView"
-        app:layout_constraintTop_toTopOf="@id/pickUpPlanetTextView" />
-
-    <TextView
-        android:id="@+id/dropOffTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_medium"
-        android:fontFamily="sans-serif-medium"
-        android:lineSpacingExtra="0.7sp"
-        android:textColor="@color/warm_grey"
-        app:layout_constraintBottom_toBottomOf="@id/pickUpPlanetTextView"
-        app:layout_constraintStart_toEndOf="@id/stationSeparatorImageView"
-        app:layout_constraintTop_toTopOf="@id/pickUpPlanetTextView"
-        tools:text="Coruscent" />
-
     <com.remipradal.starwars.common.RatingView
         android:id="@+id/ratingView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_medium"
         app:emptyStarDrawable="@drawable/ic_star_empty_32dp"
         app:filledStarDrawable="@drawable/ic_star_filled_32dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/pilotNameTextView"
         app:layout_constraintTop_toBottomOf="@id/pickUpPlanetTextView"
         app:layout_constraintVertical_chainStyle="packed"
-        tools:visibility="visible" />
-
+        tools:visibility="gone" />
 
     <View
         android:id="@+id/hitBoxView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:background="?attr/selectableItemBackground"
         android:clickable="true"
         android:focusable="true"
-        android:background="?attr/selectableItemBackground" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
